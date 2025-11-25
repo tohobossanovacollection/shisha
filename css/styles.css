@@ -1,0 +1,192 @@
+/* Basic reset and typography */
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#222 }
+a { color: inherit; text-decoration: none }
+
+/* ===== Lightweight fallback styles (used when Bootstrap CDN is unavailable) ===== */
+/* These are intentionally compact and only target classes used in this project. */
+.container { width:100%; max-width:1100px; margin-left:auto; margin-right:auto; padding-left:0.75rem; padding-right:0.75rem; }
+.d-flex { display:flex; }
+.align-items-center { align-items:center; }
+.justify-content-between { justify-content:space-between; }
+.text-center { text-align:center; }
+.gap-2 { gap:0.5rem; }
+.py-2 { padding-top:0.5rem; padding-bottom:0.5rem; }
+.py-5 { padding-top:3rem; padding-bottom:3rem; }
+.mt-3 { margin-top:1rem; }
+.my-4 { margin-top:1.5rem; margin-bottom:1.5rem; }
+.mx-auto { margin-left:auto; margin-right:auto; }
+.d-block { display:block; }
+.w-100 { width:100%; }
+.h-100 { height:100%; }
+.rounded { border-radius:8px; }
+.overflow-hidden { overflow:hidden; }
+.shadow-sm { box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.card { background:#fff; border:1px solid #e9ecef; border-radius:8px; }
+.p-3 { padding:1rem; }
+
+/* Buttons */
+.btn { display:inline-block; padding:0.45rem 0.75rem; border-radius:6px; cursor:pointer; border:1px solid transparent; background:#e9ecef; color:#111; }
+.btn-sm { padding:0.25rem 0.5rem; font-size:0.85rem; }
+.btn-outline-primary { background:transparent; border-color:#0d6efd; color:#0d6efd; }
+.btn-outline-secondary { background:transparent; border-color:#6c757d; color:#6c757d; }
+.btn-outline-primary:hover, .btn-outline-secondary:hover { opacity:0.9; }
+.btn-success { background:#198754; color:#fff; border-color:#198754; }
+.btn-group { display:inline-flex; }
+.btn-check { display:none; }
+
+/* Forms */
+.form-control, input[type="date"], select.form-select { display:block; width:100%; padding:0.45rem 0.6rem; border:1px solid #ced4da; border-radius:6px; }
+.form-label { display:block; margin-bottom:0.25rem; font-size:0.8rem; color:#556; font-weight:600 }
+
+.form-label.visually-hidden { position:absolute !important; clip:rect(1px,1px,1px,1px); padding:0 !important; border:0 !important; height:1px !important; width:1px !important; overflow:hidden }
+
+/* Nav / links */
+.nav-link { padding:0.45rem 0.75rem; color:#333; display:inline-block; }
+.nav-link:hover { background:#f8f9fa; }
+
+/* Responsive helpers */
+@media (max-width:767px) {
+	.d-md-none { display:inline-block; }
+	.d-none { display:none; }
+	.d-md-flex { display:none; }
+}
+@media (min-width:768px) {
+	.d-md-flex { display:flex; }
+	.d-md-none { display:none; }
+}
+
+/* End fallback styles */
+
+.site-header .logo { width:44px; height:44px }
+.brand-name { color:#0b5 }
+
+/* Make header stick to top when scrolling */
+header.site-header {
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	top: 0;
+	z-index: 1100;
+}
+
+/* Position the logo at the extreme left and language/actions at the extreme right
+	 while keeping the nav centered. We use absolute positioning inside the container. */
+.site-header .container { position: relative; }
+.site-header .logo-wrap { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 1110; }
+.site-header .main-nav { margin: 0 auto; }
+.site-header .actions { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 1110; }
+
+/* On small screens, fall back to normal flow so hamburger/menu isn't hidden */
+@media (max-width: 767px) {
+	.site-header .logo-wrap, .site-header .actions { position: static; transform: none; }
+	.site-header .main-nav { margin: 0; }
+}
+
+/* keep some local overrides and keep hero styles for fallback */
+.hero { padding:3rem 1rem; text-align:center }
+.hero h1 { margin:0 0 0.5rem; font-size:1.75rem }
+.hero p { margin:0 0 1rem; color:#555 }
+.cta { display:inline-block; padding:0.7rem 1rem; background:#0b5; color:#fff; border-radius:8px; font-weight:700 }
+
+/* small utility adjustments */
+/* Only make the main hero carousel a fixed height. Other carousels (testimonials)
+   should size to their content so indicators sit close to cards. */
+#mainCarousel .carousel-inner { /* fixed carousel viewport height so hero image slides match */
+	height: 450px;
+}
+#mainCarousel .carousel-item { height: 100%; }
+#mainCarousel .carousel-item img { object-fit: cover; height: 100%; width:100%; }
+
+/* Ensure embedded iframe/video slides in main carousel fill the same height as images */
+#mainCarousel .carousel-item .ratio { height: 100%; min-height: 0; }
+#mainCarousel .carousel-item iframe { width:100%; height:100%; border:0; }
+
+/* Booking flex inputs: make fields flex to fill space without gaps */
+.booking .inputs-row { display:flex; gap:0.75rem; align-items:flex-end; }
+.booking .inputs-row .field { flex:1 1 0; min-width:160px; display:flex; flex-direction:column; }
+.booking .inputs-row .field.narrow { flex:0 0 140px; min-width:120px; }
+.booking .inputs-row .field .form-control, .booking .inputs-row .field .form-select { width:100%; }
+
+@media (max-width:767px) {
+	.booking .inputs-row { flex-direction:column; }
+	.booking .inputs-row .field.narrow { flex:1 1 0; }
+}
+
+/* Testimonials styles */
+.testimonials h3 { font-weight:700; margin-top:0; }
+.testimonial-card { display:flex; gap:1rem; background:#fff; border:1px solid #eef2f4; border-radius:8px; align-items:flex-start; }
+.testimonial-card .testi-avatar { width:96px; height:96px; object-fit:cover; border-radius:6px; }
+.testimonial-card .testi-body { flex:1 }
+.testi-name { color:#1e73be; margin:0 0 0.25rem; font-size:1.15rem }
+.testi-role { color:#666; font-size:0.9rem; margin-bottom:0.5rem }
+.testi-text { color:#333; font-size:0.95rem; line-height:1.5 }
+
+.testimonial-card p { margin:0 }
+
+/* testimonial carousel indicators (styled as hollow/filled dots) */
+/* place testimonial indicators overlayed near the bottom of the carousel
+	 and tighten spacing so they're visually close to the cards */
+#testimonialsCarousel { position:relative; }
+#testimonialsCarousel .carousel-indicators {
+	position:absolute;
+	left:0; right:0; bottom:-40px; /* place just below the card bottoms */
+	display:flex; gap:0.25rem; justify-content:center; padding-left:0; margin:0; list-style:none; z-index:5;
+	pointer-events:auto;
+}
+#testimonialsCarousel .carousel-indicators button {
+	width:12px; height:12px; border-radius:50%; border:2px solid #2f93ff; background:transparent; opacity:1; padding:0; cursor:pointer;
+	display:inline-flex; align-items:center; justify-content:center; transition:transform 160ms ease;
+}
+#testimonialsCarousel .carousel-indicators button:hover { transform:scale(1.08); }
+#testimonialsCarousel .carousel-indicators button.active {
+	background:#2f93ff; border-color:#2f93ff;
+}
+
+/* Ensure there's breathing room below testimonials so indicators don't overlap following sections */
+#testimonialsCarousel { margin-bottom:18px; }
+
+/* Platform / features section */
+.platform h4 { font-weight:700 }
+.feature-card { display:flex; gap:0.9rem; align-items:flex-start; background:#f9f4f4; border:1px solid #eef2f4; border-radius:8px }
+.feature-icon { width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:10px; font-size:22px; }
+.feature-icon.bg-blue { background:#e7f1ff; color:#1877f2 }
+.feature-icon.bg-yellow { background:#fff6e6; color:#f59e0b }
+.feature-icon.bg-green { background:#e9f8ef; color:#16a34a }
+.feature-icon.bg-red { background:#fff0f0; color:#ef4444 }
+.feature-body h5 { margin:0 0 0.3rem; font-size:1rem }
+.feature-body p { margin:0; color:#666; font-size:0.9rem }
+
+@media (max-width:767px) {
+	.feature-card { align-items:center }
+	.feature-icon { width:48px; height:48px }
+}
+
+
+/* Centered brand section */
+.brand-center h2 { font-weight:700; color:#0b5; }
+
+/* Booking card tweaks */
+.booking .card { max-width:1100px; margin-left:auto; margin-right:auto; }
+
+@media (max-width:767px) {
+	.carousel-inner { height:260px; }
+	.booking .card { padding:0.75rem; }
+}
+
+/* Footer styles */
+.site-footer { background:#2f5878; color:#fff; }
+.site-footer a { color: #fff; text-decoration:none; }
+.site-footer .footer-left strong { display:block; font-size:1.05rem; color:#fff; }
+.site-footer .footer-contact { color:rgba(255,255,255,0.95); margin-top:6px; line-height:1.6 }
+.site-footer .social-icon { width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; border:1px solid rgba(255,255,255,0.08); padding:4px }
+.site-footer .social-img { width:100%; height:100%; object-fit:contain; display:block }
+.site-footer .footer-copy { color:rgba(255,255,255,0.9); font-size:0.95rem }
+
+@media (max-width:767px) {
+	.site-footer .footer-left { text-align:left }
+	.site-footer .footer-copy { padding-top:0.75rem }
+}
+
+body { background: #f7f9fb; }
+      header.site-header { border-bottom: 4px solid #0b5; }
+      .brand-name { color: #0b5; font-weight:700 }
