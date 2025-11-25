@@ -10,7 +10,50 @@
       news: 'Tin tức',
       contact: 'Liên hệ',
       heroTitle: 'Đặt vé xe nhanh chóng',
-      heroSub: 'Tìm chuyến, đặt vé, nhận thông báo — tất cả trong một.'
+      heroSub: 'Tìm chuyến, đặt vé, nhận thông báo — tất cả trong một.',
+      carousel1Title: 'Đặt vé xe nhanh chóng',
+      carousel1Sub: 'Tìm chuyến, đặt vé, nhận thông báo — tất cả trong một.',
+      carousel2Title: 'Đặt vé dễ dàng, mọi lúc mọi nơi',
+      carousel2Sub: 'Chỉ với vài thao tác đơn giản, bạn có thể đặt vé xe khách trực tuyến 24/7. Giao diện thân thiện, hỗ trợ nhiều phương thức thanh toán, giúp bạn chủ động lên kế hoạch di chuyển.',
+      carousel3Title: 'So sánh giá, chọn chuyến phù hợp',
+      carousel3Sub: 'Hệ thống tự động so sánh giá vé, hãng xe, giờ xuất phát và các tiện ích đi kèm. Bạn dễ dàng chọn chuyến đi phù hợp nhất với nhu cầu và ngân sách của mình.',
+      carousel4Title: 'Hỗ trợ khách hàng nhanh chóng',
+      carousel4Sub: 'Đội ngũ chăm sóc khách hàng sẵn sàng hỗ trợ bạn trước, trong và sau chuyến đi. Nhận thông báo thời gian xe đến, hướng dẫn lên xe, và giải đáp mọi thắc mắc qua hotline hoặc chat trực tuyến.',
+      carousel5Title: 'Ưu đãi hấp dẫn',
+      carousel5Sub: 'Giảm giá cho nhiều tuyến đường.',
+      carousel6Title: 'Video giới thiệu',
+      carousel6Sub: 'Xem video ngắn về dịch vụ.',
+      bookingFrom: 'Điểm đi',
+      bookingTo: 'Điểm đến',
+      bookingDeparture: 'Ngày đi',
+      bookingReturn: 'Ngày về',
+      bookingPassengers: 'Hành khách',
+      bookingSearch: 'Tìm kiếm',
+      oneWay: 'Một chiều',
+      roundtrip: 'Khứ hồi',
+      search: 'Tìm kiếm',
+      testimonialsTitle: 'Khách hàng nói gì về Vexere',
+          testi1Name: 'Anh Nguyễn Tuấn Quỳnh',
+          testi1Role: 'CEO Saigon Books',
+          testi1Text: 'Lần trước tôi có việc gấp phải đi công tác, lên mạng tìm đặt vé xe thì tình cờ tìm thấy Vexere. Sau khi tham khảo, tôi quyết định đặt vé và thanh toán.',
+          testi2Name: 'Shark Phi',
+          testi2Role: 'Giám đốc BSSC',
+          testi2Text: 'Các đối tác của Vexere đều là những hãng xe lớn, có uy tín nên tôi hoàn toàn yên tâm khi lựa chọn đặt vé cho bản thân và gia đình.',
+          testi3Name: 'Lê Thị Mai',
+          testi3Role: 'Nhân viên văn phòng',
+          testi3Text: 'Tôi rất hài lòng với trải nghiệm đặt vé: giao diện rõ ràng, thao tác nhanh. Hệ thống thông báo chính xác thời gian xe đến.',
+          testi4Name: 'Nguyễn Văn An',
+          testi4Role: 'Freelancer',
+          testi4Text: 'Giá vé hợp lý, dễ so sánh giữa các hãng. Tôi tìm thấy chuyến phù hợp trong vài phút và nhận vé điện tử ngay lập tức.',
+          platformTitle: 'Nền tảng kết nối người dùng và nhà xe',
+          platform1Title: '2000+ nhà xe chất lượng cao',
+          platform1Text: '5000+ tuyến đường trên toàn quốc, chủ động và đa dạng lựa chọn.',
+          platform2Title: 'Đặt vé dễ dàng',
+          platform2Text: 'Đặt vé chỉ với 60s. Chọn xe yêu thích cực nhanh và thuận tiện.',
+          platform3Title: 'Chắc chắn có chỗ',
+          platform3Text: 'Hoàn ngay 150% nếu nhà xe không cung cấp dịch vụ vận chuyển.',
+          platform4Title: 'Nhiều ưu đãi',
+          platform4Text: 'Hàng ngàn ưu đãi cực chất độc quyền tại Vexere.'
     },
     en: {
       book: 'Book trip',
@@ -21,7 +64,50 @@
       news: 'News',
       contact: 'Contact',
       heroTitle: 'Book bus tickets fast',
-      heroSub: 'Search routes, book seats, get notifications — all in one.'
+      heroSub: 'Search routes, book seats, get notifications — all in one.',
+      carousel1Title: 'Book bus tickets fast',
+      carousel1Sub: 'Search routes, book seats, get notifications — all in one.',
+      carousel2Title: 'Easy booking, anytime, anywhere',
+      carousel2Sub: 'Just a few simple steps to book bus tickets online 24/7. Friendly interface, multiple payment methods, helping you plan your trip proactively.',
+      carousel3Title: 'Compare prices, choose your trip',
+      carousel3Sub: 'Automatically compare ticket prices, bus companies, departure times, and amenities. Easily select the best trip for your needs and budget.',
+      carousel4Title: 'Fast customer support',
+      carousel4Sub: 'Our support team is ready to assist you before, during, and after your trip. Get bus arrival notifications, boarding instructions, and answers to all questions via hotline or live chat.',
+      carousel5Title: 'Attractive promotions',
+      carousel5Sub: 'Discounts on many routes.',
+      carousel6Title: 'Intro video',
+      carousel6Sub: 'Watch a short video about our service.',
+      bookingFrom: 'From',
+      bookingTo: 'To',
+      bookingDeparture: 'Departure Date',
+      bookingReturn: 'Return Date',
+      bookingPassengers: 'Passengers',
+      bookingSearch: 'Search',
+      oneWay: 'One Way',  
+      roundtrip: 'Round Trip',
+      search: 'Search',
+      testimonialsTitle: 'What customers say about Vexere',
+          testi1Name: 'Nguyen Tuan Quynh',
+          testi1Role: 'CEO Saigon Books',
+          testi1Text: 'Last time I had an urgent business trip, I searched online for bus tickets and found Vexere by chance. After checking, I decided to book and pay online.',
+          testi2Name: 'Shark Phi',
+          testi2Role: 'Director of BSSC',
+          testi2Text: 'Vexere partners are all reputable bus companies, so I feel completely secure booking tickets for myself and my family.',
+          testi3Name: 'Le Thi Mai',
+          testi3Role: 'Office staff',
+          testi3Text: 'I am very satisfied with the booking experience: clear interface, quick operation. The system accurately notifies bus arrival time.',
+          testi4Name: 'Nguyen Van An',
+          testi4Role: 'Freelancer',
+          testi4Text: 'Reasonable ticket prices, easy to compare between companies. I found a suitable trip in minutes and received my e-ticket instantly.',
+          platformTitle: 'Platform connecting users and bus operators',
+          platform1Title: '2000+ high-quality bus companies',
+          platform1Text: '5000+ routes nationwide, flexible and diverse choices.',
+          platform2Title: 'Easy ticket booking',
+          platform2Text: 'Book tickets in just 60 seconds. Quickly choose your favorite bus.',
+          platform3Title: 'Guaranteed seats',
+          platform3Text: '150% refund if the bus company does not provide transportation.',
+          platform4Title: 'Many promotions',
+          platform4Text: 'Thousands of exclusive promotions at Vexere.'
     }
   };
 
@@ -32,8 +118,63 @@
   function apply(lang){
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if(translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+      if(translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
     });
+    // Carousel static captions (for slides without data-i18n)
+    // Slide 2
+    const c2Title = document.querySelector('.carousel-item:nth-child(2) .carousel-caption h5');
+    const c2Sub = document.querySelector('.carousel-item:nth-child(2) .carousel-caption p');
+    if(c2Title && c2Sub) {
+      c2Title.textContent = translations[lang].carousel2Title;
+      c2Sub.textContent = translations[lang].carousel2Sub;
+    }
+    // Slide 3
+    const c3Title = document.querySelector('.carousel-item:nth-child(3) .carousel-caption h5');
+    const c3Sub = document.querySelector('.carousel-item:nth-child(3) .carousel-caption p');
+    if(c3Title && c3Sub) {
+      c3Title.textContent = translations[lang].carousel3Title;
+      c3Sub.textContent = translations[lang].carousel3Sub;
+    }
+    // Slide 4
+    const c4Title = document.querySelector('.carousel-item:nth-child(4) .carousel-caption h5');
+    const c4Sub = document.querySelector('.carousel-item:nth-child(4) .carousel-caption p');
+    if(c4Title && c4Sub) {
+      c4Title.textContent = translations[lang].carousel4Title;
+      c4Sub.textContent = translations[lang].carousel4Sub;
+    }
+    // Slide 5
+    const c5Title = document.querySelector('.carousel-item:nth-child(5) .carousel-caption h5');
+    const c5Sub = document.querySelector('.carousel-item:nth-child(5) .carousel-caption p');
+    if(c5Title && c5Sub) {
+      c5Title.textContent = translations[lang].carousel5Title;
+      c5Sub.textContent = translations[lang].carousel5Sub;
+    }
+    // Slide 6 (video)
+    const c6Title = document.querySelector('.carousel-item:nth-child(6) .carousel-caption h5');
+    const c6Sub = document.querySelector('.carousel-item:nth-child(6) .carousel-caption p');
+    if(c6Title && c6Sub) {
+      c6Title.textContent = translations[lang].carousel6Title;
+      c6Sub.textContent = translations[lang].carousel6Sub;
+    }
+    // Booking form labels
+    const bookingLabels = [
+      { sel: 'label[for="oneWay"]', key: 'oneWay' },
+      { sel: 'label[for="roundTrip"]', key: 'roundtrip' },
+      { sel: 'label[for="from"]', key: 'bookingFrom' },
+      { sel: 'label[for="to"]', key: 'bookingTo' },
+      { sel: 'label[for="departure"]', key: 'bookingDeparture' },
+      { sel: 'label[for="returnDate"]', key: 'bookingReturn' },
+      { sel: 'label[for="passengers"]', key: 'bookingPassengers' }
+    ];
+    bookingLabels.forEach(item => {
+      const el = document.querySelector(item.sel);
+      if(el && translations[lang][item.key]) el.textContent = translations[lang][item.key];
+    });
+    // Booking form search button
+    const searchBtn = document.querySelector('#bookingForm button[type="submit"]');
+    if(searchBtn) searchBtn.textContent = translations[lang].bookingSearch;
     root.lang = lang;
     // update the language button label
     if(langBtn) {
