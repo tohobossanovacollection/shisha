@@ -44,6 +44,25 @@ a { color: inherit; text-decoration: none }
 /* Nav / links */
 .nav-link { padding:0.45rem 0.75rem; color:#333; display:inline-block; }
 .nav-link:hover { background:#f8f9fa; }
+.nav-link:hover {
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.5); /* Green shadow */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Change header nav menu text color to dark green */
+.nav-link {
+  color: #155724; /* Dark green */
+}
+
+/* Reduce boldness of header nav menu text */
+.nav-link {
+  font-weight: 600; /* Slightly less bold */
+}
+
+/* Increase font size for header nav menu text */
+.nav-link {
+  font-size: 1.1rem; /* Slightly larger font size */
+}
 
 /* Responsive helpers */
 @media (max-width:767px) {
@@ -221,6 +240,14 @@ header.site-header {
 	.feature-icon { width:48px; height:48px }
 }
 
+.platform .feature-body {
+	flex-direction: column;
+	height: 100%;
+ 	display: flex;
+  	align-items: flex-start; /* Align text at the top */
+  	min-height: 120px; /* Ensure consistent height */
+	justify-content: space-between;
+}
 
 /* Centered brand section */
 .brand-center h2 { font-weight:700; color:#0b5; }
@@ -254,3 +281,15 @@ body { background: #f7f9fb; }
 /* small helper for the inline refresh icon used in the language button */
 .icon-refresh { display:inline-block; width:18px; height:18px; vertical-align:middle; color:inherit; }
 .btn .icon-refresh { margin:3px; }
+
+/* Align images and text in trending trips section */
+.trending-trips .trip-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.trending-trips .trip-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
