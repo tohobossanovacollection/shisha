@@ -49,20 +49,12 @@ a { color: inherit; text-decoration: none }
   transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Change header nav menu text color to dark green */
 .nav-link {
-  color: #155724; /* Dark green */
+  color: #155724; 
+  font-weight: 600; 
+  font-size: 1.1rem; 
 }
 
-/* Reduce boldness of header nav menu text */
-.nav-link {
-  font-weight: 600; /* Slightly less bold */
-}
-
-/* Increase font size for header nav menu text */
-.nav-link {
-  font-size: 1.1rem; /* Slightly larger font size */
-}
 
 /* Responsive helpers */
 @media (max-width:767px) {
@@ -87,13 +79,7 @@ header.site-header {
 	top: 0;
 	z-index: 1100;
 }
-
-/* Position the logo at the extreme left and language/actions at the extreme right
-	 while keeping the nav centered. We use absolute positioning inside the container. */
-
-/* Desktop: position logo and actions flush to header edges and keep nav centered
-   Logo and actions are absolutely positioned to the header so they can sit at the
-   viewport edges while the main nav remains centered inside the project container. */
+/* Desktop: absolutely position logo and actions to edges; center nav */
 @media (min-width: 768px) {
 	.site-header {
 		/* header becomes the positioning context for absolute children */
@@ -293,3 +279,4 @@ body { background: #f7f9fb; }
   flex-direction: column;
   justify-content: space-between;
 }
+
