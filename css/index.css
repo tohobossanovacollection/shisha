@@ -263,6 +263,9 @@ header.site-header {
 /* Footer styles */
 .site-footer { background:#2f5878; color:#fff; }
 .site-footer a { color: #fff; text-decoration:none; }
+.site-footer a:hover {
+  color: #28a745; /* Green color */
+}
 .site-footer .footer-left strong { display:block; font-size:1.05rem; color:#fff; }
 .site-footer .footer-contact { color:rgba(255,255,255,0.95); margin-top:6px; line-height:1.6 }
 .site-footer .social-icon { width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; border:1px solid rgba(255,255,255,0.08); padding:4px }

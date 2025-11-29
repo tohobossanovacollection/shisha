@@ -3,8 +3,8 @@
   const translations = {
     vi: {
       book: 'Đặt chuyến',
-      lookup: 'Tra cứu chuyến',
-      available: 'Lịch trình',
+      lookup: 'Lịch trình',
+      available: 'Tra cứu mã đặt vé',
       trending: 'Chuyến đi đang trend',
       help: 'Trợ giúp',
       news: 'Tin tức',
@@ -67,8 +67,8 @@
     },
     en: {
       book: 'Book trip',
-      lookup: 'Lookup trip',
-      available: 'Available trips',
+      lookup: 'Available trips',
+      available: 'Check reservations',
       trending: 'Trending trips',
       help: 'Help',
       news: 'News',
