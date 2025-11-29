@@ -1,4 +1,9 @@
 /* Trip Section Styling */
+.trip-section .card {
+  min-height: auto !important;
+  height: auto !important;
+}
+
 .trip-section .trip-item {
   border-bottom: 1px solid #ddd;
   display: flex;
@@ -7,6 +12,15 @@
 
 .trip-section .trip-item:last-child {
   border-bottom: none;
+}
+
+.trip-section .trip-item.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
 }
 
 .trip-section .trip-item > div {
@@ -38,6 +52,20 @@
   align-self: center;
   display: inline-flex;
   align-items: center;
+}
+
+.trip-section .trip-action .btn {
+  border-width: 1px;
+  border-radius: 20px;
+  padding: 5px 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.trip-section .trip-action .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
 }
 
 /* Trip Info Card Styling */

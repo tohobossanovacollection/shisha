@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chi tiết tuyến xe</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ChiTietTuyen.css">
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header class="site-header bg-white shadow-sm">
+      <a href="index.html" class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
+        <span class="brand-name h5 mb-0">LobiBus</span>
+      </a>
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="#" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="nav-link px-3" href="#" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="nav-link px-3" href="#" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="#" data-i18n="news">Tin tức</a>
+          <a class="nav-link px-3" href="#" data-i18n="contact">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
+            <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">Tiếng Việt</button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">English</button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Route Info Section -->
+      <section class="route-info container my-4">
+        <div class="card p-4 shadow-sm">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <a href="LichTrinh.html" class="btn btn-outline-secondary btn-sm">← Quay lại</a>
+          </div>
+          <h2 class="mb-3" id="routeTitle">Tuyến: <span id="routeName">Đang tải...</span></h2>
+          <div class="row">
+            <div class="col-md-4">
+              <strong>Loại xe:</strong> <span id="busType">-</span>
+            </div>
+            <div class="col-md-4">
+              <strong>Quãng đường:</strong> <span id="distance">-</span>
+            </div>
+            <div class="col-md-4">
+              <strong>Thời gian:</strong> <span id="duration">-</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bus List Section -->
+      <section class="bus-list container my-4">
+        <div class="card p-4 shadow-sm">
+          <h3 class="mb-4">Danh sách các chuyến xe</h3>
+          
+          <!-- Date Filter Card -->
+          <div class="card mb-4 bg-light">
+            <div class="card-body">
+              <h5 class="card-title mb-3">Chọn ngày khởi hành</h5>
+              <div class="row align-items-end">
+                <div class="col-md-8">
+                  <label for="dateFilter" class="form-label">Ngày đi</label>
+                  <input type="date" id="dateFilter" class="form-control" 
+                         min="2025-01-01" max="2025-12-30">
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <button id="btnFilterDate" class="btn btn-success w-100">Tìm chuyến</button>
+                  <button id="btnClearDate" class="btn btn-outline-secondary w-100 mt-2">Xem tất cả</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div id="busList" class="bus-items">
+            <!-- Danh sách xe sẽ được thêm động từ JavaScript -->
+            <div class="text-center py-4">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+      <div class="container">
+        <div class="row align-items-center py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <strong style="font-size: 1.5rem;">LobiBus</strong>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0936 363 363</div>
+              <div>Email: <a href="mailto:info@mountaintravel.vn">info@XeNhanh.vn</a></div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-start mt-3 mt-md-0">
+            <div class="footer-links">
+              <div class="row g-4">
+                <div class="col-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Thông tin</strong></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Điều khoản sử dụng</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Hỗ trợ khách hàng</a></li>
+                    <li class="mb-2"><a href="#">Về chúng tôi</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 ps-5">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Dịch vụ</strong></li>
+                    <li class="mb-2"><a href="#">Đặt vé xe</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Tra cứu mã đặt vé</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Chuyến đi hot trend</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Liên hệ</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 xenhanh.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/ChiTietTuyen.js"></script>
+  </body>
+</html>
