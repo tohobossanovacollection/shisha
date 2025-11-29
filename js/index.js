@@ -4,7 +4,7 @@
     vi: {
       book: 'Đặt chuyến',
       lookup: 'Tra cứu chuyến',
-      available: 'Chuyến đi có sẵn',
+      available: 'Lịch trình',
       trending: 'Chuyến đi đang trend',
       help: 'Trợ giúp',
       news: 'Tin tức',
@@ -350,4 +350,15 @@
         syncDisabled();
       }
     });
+      // Highlight the active menu item based on the current page
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll(".main-nav .nav-link");
+
+        navLinks.forEach(link => {
+          if (link.getAttribute("href") && currentPath.includes(link.getAttribute("href"))) {
+            link.classList.add("active");
+          }
+        });
+      });
 })();

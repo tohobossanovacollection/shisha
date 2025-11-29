@@ -1,0 +1,53 @@
+/* Trip Section Styling */
+.trip-section .trip-item {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+}
+
+.trip-section .trip-item:last-child {
+  border-bottom: none;
+}
+
+.trip-section .trip-item > div {
+  display: flex;
+  align-items: flex-start; /* Align content to the top */
+  justify-content: flex-start; /* Align content to the left */
+  text-align: left; /* Align text to the left */
+  font-size: 1.1rem; /* Increased font size for better readability */
+  padding: 10px 15px;
+}
+
+.trip-section .trip-route,
+.trip-section .trip-type,
+.trip-section .trip-distance,
+.trip-section .trip-duration,
+.trip-section .trip-price {
+  flex: 1 1 20%;
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+}
+
+.trip-section .trip-price {
+  display: none;
+}
+
+.trip-section .trip-action {
+  flex: 0 0 auto;
+  margin-left: auto;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Trip Info Card Styling */
+.trip-info {
+  text-align: left; /* Align text to the left */
+}
+
+.trip-info .trip-info-item {
+  color: #28a745; /* Green color */
+  font-size: 1.2rem;
+  padding: 10px 0;
+  text-align: left; /* Align text to the left */
+}

@@ -55,6 +55,20 @@ a { color: inherit; text-decoration: none }
   font-size: 1.1rem; 
 }
 
+/* Highlight active menu item */
+.main-nav .nav-link.active {
+  position: relative;
+}
+
+.main-nav .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Adjust the position of the underline */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of the underline */
+  background-color: green; 
+}
 
 /* Responsive helpers */
 @media (max-width:767px) {

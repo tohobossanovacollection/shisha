@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lịch trình</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/LichTrinh.css">
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header class="site-header bg-white shadow-sm">
+      <a href="index.html" class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
+        <span class="brand-name h5 mb-0">LobiBus</span>
+      </a>
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="#" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="#" data-i18n="lookup">Tra cứu chuyến</a>
+          <a class="nav-link px-3" href="LichTrinh.html" data-i18n="available">Lịch trình</a>
+          <a class="nav-link px-3" href="#" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="#" data-i18n="news">Tin tức</a>
+          <a class="nav-link px-3" href="#" data-i18n="contact">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
+            <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">Tiếng Việt</button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">English</button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+    </header>
+
+    <!-- Main Content Placeholder -->
+    <main>
+      <!-- Search Form -->
+      <section class="booking container my-4">
+        <div class="card p-3 shadow-sm">
+          <form id="searchForm" class="w-100">
+            <div class="d-flex inputs-row gap-2 flex-wrap">
+              <div class="field">
+                <label class="form-label" for="from">Điểm đi</label>
+                <select id="from" class="form-select">
+                  <option value="">-- Chọn tỉnh/thành --</option>
+                  <option value="ha_noi">Hà Nội</option>
+                  <option value="hue">Huế</option>
+                  <option value="lai_chau">Lai Châu</option>
+                  <option value="dien_bien">Điện Biên</option>
+                  <option value="son_la">Sơn La</option>
+                  <option value="lang_son">Lạng Sơn</option>
+                  <option value="quang_ninh">Quảng Ninh</option>
+                  <option value="thanh_hoa">Thanh Hóa</option>
+                  <option value="nghe_an">Nghệ An</option>
+                  <option value="ha_tinh">Hà Tĩnh</option>
+                  <option value="cao_bang">Cao Bằng</option>
+                  <option value="tuyen_quang">Tuyên Quang</option>
+                  <option value="lao_cai">Lào Cai</option>
+                  <option value="thai_nguyen">Thái Nguyên</option>
+                  <option value="phu_tho">Phú Thọ</option>
+                  <option value="bac_ninh">Bắc Ninh</option>
+                  <option value="hung_yen">Hưng Yên</option>
+                  <option value="hai_phong">Hải Phòng</option>
+                  <option value="ninh_binh">Ninh Bình</option>
+                  <option value="quang_tri">Quảng Trị</option>
+                  <option value="da_nang">Đà Nẵng</option>
+                  <option value="quang_ngai">Quảng Ngãi</option>
+                  <option value="gia_lai">Gia Lai</option>
+                  <option value="khanh_hoa">Khánh Hòa</option>
+                  <option value="lam_dong">Lâm Đồng</option>
+                  <option value="dak_lak">Đắk Lắk</option>
+                  <option value="tp_hcm">Thành phố Hồ Chí Minh</option>
+                  <option value="dong_nai">Đồng Nai</option>
+                  <option value="tay_ninh">Tây Ninh</option>
+                  <option value="can_tho">Cần Thơ</option>
+                  <option value="vinh_long">Vĩnh Long</option>
+                  <option value="dong_thap">Đồng Tháp</option>
+                  <option value="ca_mau">Cà Mau</option>
+                  <option value="an_giang">An Giang</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="form-label" for="to">Điểm đến</label>
+                <select id="to" class="form-select">
+                  <option value="">-- Chọn tỉnh/thành --</option>
+                  <option value="ha_noi">Hà Nội</option>
+                  <option value="hue">Huế</option>
+                  <option value="lai_chau">Lai Châu</option>
+                  <option value="dien_bien">Điện Biên</option>
+                  <option value="son_la">Sơn La</option>
+                  <option value="lang_son">Lạng Sơn</option>
+                  <option value="quang_ninh">Quảng Ninh</option>
+                  <option value="thanh_hoa">Thanh Hóa</option>
+                  <option value="nghe_an">Nghệ An</option>
+                  <option value="ha_tinh">Hà Tĩnh</option>
+                  <option value="cao_bang">Cao Bằng</option>
+                  <option value="tuyen_quang">Tuyên Quang</option>
+                  <option value="lao_cai">Lào Cai</option>
+                  <option value="thai_nguyen">Thái Nguyên</option>
+                  <option value="phu_tho">Phú Thọ</option>
+                  <option value="bac_ninh">Bắc Ninh</option>
+                  <option value="hung_yen">Hưng Yên</option>
+                  <option value="hai_phong">Hải Phòng</option>
+                  <option value="ninh_binh">Ninh Bình</option>
+                  <option value="quang_tri">Quảng Trị</option>
+                  <option value="da_nang">Đà Nẵng</option>
+                  <option value="quang_ngai">Quảng Ngãi</option>
+                  <option value="gia_lai">Gia Lai</option>
+                  <option value="khanh_hoa">Khánh Hòa</option>
+                  <option value="lam_dong">Lâm Đồng</option>
+                  <option value="dak_lak">Đắk Lắk</option>
+                  <option value="tp_hcm">Thành phố Hồ Chí Minh</option>
+                  <option value="dong_nai">Đồng Nai</option>
+                  <option value="tay_ninh">Tây Ninh</option>
+                  <option value="can_tho">Cần Thơ</option>
+                  <option value="vinh_long">Vĩnh Long</option>
+                  <option value="dong_thap">Đồng Tháp</option>
+                  <option value="ca_mau">Cà Mau</option>
+                  <option value="an_giang">An Giang</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Search button -->
+            <div class="mt-3">
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success">Tìm kiếm</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Trip Info Card -->
+      <section class="trip-info container my-2">
+        <div class="card p-3 shadow-sm">
+          <div class="d-flex flex-wrap align-items-center">
+            <div class="trip-info-item flex-grow-1" style="text-align: left; padding-left: 20px;"><strong>Tuyến xe</strong></div>
+            <div class="trip-info-item flex-grow-1" style="text-align: left; padding-left: 20px;"><strong>Loại xe</strong></div>
+            <div class="trip-info-item flex-grow-1" style="text-align: left; padding-left: 20px;"><strong>Quãng đường</strong></div>
+            <div class="trip-info-item flex-grow-1" style="text-align: left; padding-left: 20px;"><strong>Thời gian</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trip Section -->
+      <section class="trip-section container my-2">
+        <div class="card p-3 shadow-sm">
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Đà Nẵng</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">765 km</div>
+            <div class="trip-duration flex-grow-1">14 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Đà Lạt</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">308 km</div>
+            <div class="trip-duration flex-grow-1">7 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Hải Phòng</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">120 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ 30 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Cần Thơ → Cà Mau</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">180 km</div>
+            <div class="trip-duration flex-grow-1">4 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Huế</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">670 km</div>
+            <div class="trip-duration flex-grow-1">12 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Nha Trang</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">430 km</div>
+            <div class="trip-duration flex-grow-1">9 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Quảng Ngãi</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">130 km</div>
+            <div class="trip-duration flex-grow-1">3 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Lào Cai</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">300 km</div>
+            <div class="trip-duration flex-grow-1">6 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Phan Thiết</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">200 km</div>
+            <div class="trip-duration flex-grow-1">4 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Hội An</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">30 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Nam Định</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">90 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Vũng Tàu</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">120 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ 30 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Tam Kỳ</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">70 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ 30 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Bắc Ninh</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">150 km</div>
+            <div class="trip-duration flex-grow-1">3 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Biên Hòa</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">30 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Đắk Lắk</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">350 km</div>
+            <div class="trip-duration flex-grow-1">8 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Thái Nguyên</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">100 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Tây Ninh</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">90 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Phú Yên</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">300 km</div>
+            <div class="trip-duration flex-grow-1">6 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Nghệ An</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">250 km</div>
+            <div class="trip-duration flex-grow-1">5 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Cần Thơ</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">170 km</div>
+            <div class="trip-duration flex-grow-1">3 giờ 30 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Kon Tum</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">400 km</div>
+            <div class="trip-duration flex-grow-1">9 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Hải Dương</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">60 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ 30 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Đồng Nai</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">40 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Bình Định</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">250 km</div>
+            <div class="trip-duration flex-grow-1">5 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Hưng Yên</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">40 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Bà Rịa</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">150 km</div>
+            <div class="trip-duration flex-grow-1">3 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Gia Lai</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">500 km</div>
+            <div class="trip-duration flex-grow-1">11 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Thanh Hóa</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">150 km</div>
+            <div class="trip-duration flex-grow-1">3 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Sóc Trăng</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">300 km</div>
+            <div class="trip-duration flex-grow-1">6 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Hậu Giang</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">350 km</div>
+            <div class="trip-duration flex-grow-1">8 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Kiên Giang</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">1,200 km</div>
+            <div class="trip-duration flex-grow-1">24 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Trà Vinh</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">250 km</div>
+            <div class="trip-duration flex-grow-1">5 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Bến Tre</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">200 km</div>
+            <div class="trip-duration flex-grow-1">4 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Long An</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">1,000 km</div>
+            <div class="trip-duration flex-grow-1">20 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Bình Dương</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">50 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ 15 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Phan Rang</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">600 km</div>
+            <div class="trip-duration flex-grow-1">13 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Ninh Bình</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">90 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Hậu Giang</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">350 km</div>
+            <div class="trip-duration flex-grow-1">8 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Sóc Trăng</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">300 km</div>
+            <div class="trip-duration flex-grow-1">6 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Kiên Giang</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">1,200 km</div>
+            <div class="trip-duration flex-grow-1">24 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Trà Vinh</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">250 km</div>
+            <div class="trip-duration flex-grow-1">5 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Bến Tre</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">200 km</div>
+            <div class="trip-duration flex-grow-1">4 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Long An</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">1,000 km</div>
+            <div class="trip-duration flex-grow-1">20 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Bình Dương</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">50 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ 15 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Phan Rang</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">600 km</div>
+            <div class="trip-duration flex-grow-1">13 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Ninh Bình</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">90 km</div>
+            <div class="trip-duration flex-grow-1">2 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Hậu Giang</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">350 km</div>
+            <div class="trip-duration flex-grow-1">8 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Sóc Trăng</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">300 km</div>
+            <div class="trip-duration flex-grow-1">6 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Kiên Giang</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">1,200 km</div>
+            <div class="trip-duration flex-grow-1">24 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Trà Vinh</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">250 km</div>
+            <div class="trip-duration flex-grow-1">5 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Bến Tre</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">200 km</div>
+            <div class="trip-duration flex-grow-1">4 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Hà Nội → Long An</div>
+            <div class="trip-type flex-grow-1">Giường nằm</div>
+            <div class="trip-distance flex-grow-1">1,000 km</div>
+            <div class="trip-duration flex-grow-1">20 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">TP.HCM → Bình Dương</div>
+            <div class="trip-type flex-grow-1">Limousine</div>
+            <div class="trip-distance flex-grow-1">50 km</div>
+            <div class="trip-duration flex-grow-1">1 giờ 15 phút</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+          <div class="trip-item d-flex flex-wrap align-items-start py-2" style="text-align: left;">
+            <div class="trip-route flex-grow-1">Đà Nẵng → Phan Rang</div>
+            <div class="trip-type flex-grow-1">Ghế ngồi</div>
+            <div class="trip-distance flex-grow-1">600 km</div>
+            <div class="trip-duration flex-grow-1">13 giờ</div>
+            <div class="trip-action"><button class="btn btn-success btn-sm">Đặt vé</button></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+      <div class="container">
+        <div class="row align-items-center py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <strong style="font-size: 1.5rem;">LobiBus</strong>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0936 363 363</div>
+              <div>Email: <a href="mailto:info@mountaintravel.vn">info@XeNhanh.vn</a></div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-start mt-3 mt-md-0">
+            <div class="footer-links">
+              <div class="row g-4">
+                <div class="col-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Thông tin</strong></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Điều khoản sử dụng</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Hỗ trợ khách hàng</a></li>
+                    <li class="mb-2"><a href="#">Về chúng tôi</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 ps-5">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Dịch vụ</strong></li>
+                    <li class="mb-2"><a href="#">Đặt vé xe</a></li>
+                    <li class="mb-2"><a href="#">Tra cứu chuyến</a></li>
+                    <li class="mb-2"><a href="#">Chuyến đi hot</a></li>
+                    <li class="mb-2"><a href="#">Liên hệ</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 xenhanh.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/LichTrinh.js"></script>
+
+  </body>
+</html>
