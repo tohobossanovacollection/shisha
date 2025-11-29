@@ -23,6 +23,7 @@ function filterTrips() {
     const toValue = normalizeName(toInput);
     
     const tripItems = document.querySelectorAll('.trip-item');
+    const tripSection = document.querySelector('.trip-section .card');
     let foundCount = 0;
     
     // ẨN TẤT CẢ CHUYẾN ĐI TRƯỚC
@@ -64,6 +65,32 @@ function filterTrips() {
             }
         }
     });
+    
+    // Hiển thị thông báo nếu không tìm thấy
+    if (foundCount === 0 && (fromValue || toValue)) {
+        // Xóa thông báo cũ nếu có
+        const oldMessage = tripSection.querySelector('.empty-message');
+        if (oldMessage) {
+            oldMessage.remove();
+        }
+        
+        // Tạo thông báo mới
+        const emptyMessage = document.createElement('div');
+        emptyMessage.className = 'empty-message';
+        emptyMessage.style.cssText = 'text-align: center; padding: 40px 20px;';
+        emptyMessage.innerHTML = `
+            <div style="font-size: 3rem;">😔</div>
+            <h4>Không tìm thấy chuyến xe phù hợp</h4>
+            <p>Không có chuyến xe nào từ <strong>${fromInput || '(tất cả)'}</strong> đến <strong>${toInput || '(tất cả)'}</strong>. Vui lòng chọn địa điểm khác.</p>
+        `;
+        tripSection.appendChild(emptyMessage);
+    } else {
+        // Xóa thông báo nếu có kết quả
+        const oldMessage = tripSection.querySelector('.empty-message');
+        if (oldMessage) {
+            oldMessage.remove();
+        }
+    }
     
     // Hiển thị kết quả
     console.log('================');
