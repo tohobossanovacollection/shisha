@@ -14,16 +14,16 @@
   <body>
 
     <header class="site-header bg-white shadow-sm">
-      <div class="logo-wrap d-flex align-items-center gap-2">
+      <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
         <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
         <span class="brand-name h5 mb-0">XeNhanh</span>
-      </div>
+      </div></a>
       <div class="container d-flex align-items-center justify-content-between py-2">
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
           <a class="nav-link px-3" href="#" data-i18n="book">Đặt chuyến</a>
           <a class="nav-link px-3" href="#" data-i18n="lookup">Tra cứu chuyến</a>
           <a class="nav-link px-3" href="#" data-i18n="available">Chuyến đi có sẵn</a>
-          <a class="nav-link px-3" href="#" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
           <a class="nav-link px-3" href="#" data-i18n="news">Tin tức</a>
           <a class="nav-link px-3" href="#" data-i18n="contact">Liên hệ</a>
         </nav>
@@ -263,7 +263,10 @@
 
     <!-- Hot Trending Trips Section -->
     <section class="trending-trips container my-5">
-      <h3 class="mb-4" data-i18n="trendingTitle">Chuyến đi hot trend</h3>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0" data-i18n="trendingTitle">Chuyến đi hot trend</h3>
+        <a href="trending.html" class="btn btn-outline-primary btn-sm" data-i18n="viewAll">Xem tất cả →</a>
+      </div>
       <div class="row g-4">
         <div class="col-12 col-md-6 col-lg-3">
           <div class="trip-card card h-100 shadow-sm">

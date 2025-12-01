@@ -33,6 +33,23 @@
       roundtrip: 'Khứ hồi',
       search: 'Tìm kiếm',
       trendingTitle: 'Chuyến đi hot trend',
+      viewAll: 'Xem tất cả →',
+      trendingPageTitle: 'Chuyến đi hot trend',
+      trendingPageSubtitle: 'Khám phá các tuyến đường phổ biến nhất, được yêu thích nhất',
+      filterRegion: 'Vùng miền',
+      allRegions: 'Tất cả',
+      northRegion: 'Miền Bắc',
+      centralRegion: 'Miền Trung',
+      southRegion: 'Miền Nam',
+      filterPrice: 'Mức giá',
+      allPrices: 'Tất cả',
+      priceLow: 'Dưới 200k',
+      priceMedium: '200k - 400k',
+      priceHigh: 'Trên 400k',
+      searchRoute: 'Tìm tuyến',
+      resetFilter: 'Đặt lại',
+      noResults: 'Không tìm thấy chuyến đi phù hợp',
+      tryAdjustFilters: 'Hãy thử điều chỉnh bộ lọc của bạn',
       trip1Title: 'Hà Nội → Đà Nẵng',
       trip1Desc: 'Tuyến đường nổi tiếng, phong cảnh đẹp',
       trip2Title: 'TP.HCM → Đà Lạt',
@@ -97,6 +114,23 @@
       roundtrip: 'Round Trip',
       search: 'Search',
       trendingTitle: 'Hot Trending Trips',
+      viewAll: 'View All →',
+      trendingPageTitle: 'Hot Trending Trips',
+      trendingPageSubtitle: 'Discover the most popular and favorite routes',
+      filterRegion: 'Region',
+      allRegions: 'All',
+      northRegion: 'Northern',
+      centralRegion: 'Central',
+      southRegion: 'Southern',
+      filterPrice: 'Price Range',
+      allPrices: 'All',
+      priceLow: 'Under 200k',
+      priceMedium: '200k - 400k',
+      priceHigh: 'Over 400k',
+      searchRoute: 'Search Route',
+      resetFilter: 'Reset',
+      noResults: 'No trips found',
+      tryAdjustFilters: 'Try adjusting your filters',
       trip1Title: 'Hanoi → Da Nang',
       trip1Desc: 'Popular route, beautiful scenery',
       trip2Title: 'Ho Chi Minh City → Da Lat',
@@ -217,6 +251,9 @@
       langBtn.setAttribute('aria-pressed', String(lang !== 'vi'));
     }
     localStorage.setItem('xn.lang', lang);
+    
+    // Dispatch event for other pages to listen
+    document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
   }
 
 

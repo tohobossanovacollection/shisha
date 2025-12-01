@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chuyến đi hot trend — XeNhanh</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/trending.css">
+  </head>
+  <body>
+
+    <header class="site-header bg-white shadow-sm">
+      <div class="logo-wrap d-flex align-items-center gap-2">
+        <a href="index.html">
+          <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
+        </a>
+        <a href="index.html" class="text-decoration-none">
+          <span class="brand-name h5 mb-0">XeNhanh</span>
+        </a>
+      </div>
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="#" data-i18n="lookup">Tra cứu chuyến</a>
+          <a class="nav-link px-3" href="#" data-i18n="available">Chuyến đi có sẵn</a>
+          <a class="nav-link px-3 active" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="#" data-i18n="news">Tin tức</a>
+          <a class="nav-link px-3" href="#" data-i18n="contact">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ">
+            <img id="lang-flag" src="images/viet-nam.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button> 
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">
+              <img src="images/viet-nam.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+              Tiếng Việt
+            </button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">
+              <img src="images/united-states.png" alt="USA" style="width: 20px; height: 15px; object-fit: cover;">
+              English
+            </button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="display-5 fw-bold mb-2" data-i18n="trendingPageTitle">Chuyến đi hot trend</h1>
+        <p class="lead text-muted" data-i18n="trendingPageSubtitle">Khám phá các tuyến đường phổ biến nhất, được yêu thích nhất</p>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section container my-4">
+      <div class="card p-3 shadow-sm">
+        <div class="row g-3">
+          <div class="col-12 col-md-3">
+            <label class="form-label fw-semibold" data-i18n="filterRegion">Vùng miền</label>
+            <select id="filterRegion" class="form-select">
+              <option value="" data-i18n="allRegions">Tất cả</option>
+              <option value="north" data-i18n="northRegion">Miền Bắc</option>
+              <option value="central" data-i18n="centralRegion">Miền Trung</option>
+              <option value="south" data-i18n="southRegion">Miền Nam</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label fw-semibold" data-i18n="filterPrice">Mức giá</label>
+            <select id="filterPrice" class="form-select">
+              <option value="" data-i18n="allPrices">Tất cả</option>
+              <option value="low" data-i18n="priceLow">Dưới 200k</option>
+              <option value="medium" data-i18n="priceMedium">200k - 400k</option>
+              <option value="high" data-i18n="priceHigh">Trên 400k</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label class="form-label fw-semibold" data-i18n="searchRoute">Tìm tuyến</label>
+            <input type="text" id="searchInput" class="form-control" placeholder="Nhập điểm đi hoặc điểm đến...">
+          </div>
+
+          <div class="col-12 col-md-2 d-flex align-items-end">
+            <button id="resetFilter" class="btn btn-outline-secondary w-100" data-i18n="resetFilter">Đặt lại</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Trips Grid -->
+    <section class="trending-trips container my-5">
+      <div class="row g-4" id="tripsGrid">
+        <!-- Trip cards will be dynamically loaded here -->
+      </div>
+    </section>
+
+    <!-- Loading State -->
+    <div class="text-center my-5 d-none" id="loadingState">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="text-center my-5 d-none" id="emptyState">
+      <div class="empty-icon mb-3">🔍</div>
+      <h4 data-i18n="noResults">Không tìm thấy chuyến đi phù hợp</h4>
+      <p class="text-muted" data-i18n="tryAdjustFilters">Hãy thử điều chỉnh bộ lọc của bạn</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+      <div class="container">
+        <div class="row align-items-center py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <strong>XeNhanh</strong>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0123 456 789</div>
+              <div>Email: <a href="mailto:info@XeNhanh.vn">info@XeNhanh.vn</a></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <div class="d-flex align-items-center gap-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 xenhanh.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/trending.js"></script>
+  </body>
+</html>
