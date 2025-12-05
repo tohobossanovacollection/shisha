@@ -184,52 +184,32 @@
     }
   ];
 
-  let currentLang = localStorage.getItem('xn.lang') || 'vi';
-  let filteredTrips = [...tripsData];
 
-  // DOM Elements
+  let currentLang = localStorage.getItem('xn.lang') || 'vi';
   const tripsGrid = document.getElementById('tripsGrid');
-  const filterRegion = document.getElementById('filterRegion');
-  const filterPrice = document.getElementById('filterPrice');
-  const searchInput = document.getElementById('searchInput');
-  const resetFilter = document.getElementById('resetFilter');
-  const loadingState = document.getElementById('loadingState');
-  const emptyState = document.getElementById('emptyState');
 
   // Render trips
   function renderTrips(trips) {
-    if (trips.length === 0) {
-      tripsGrid.innerHTML = '';
-      emptyState.classList.remove('d-none');
-      return;
-    }
-
-    emptyState.classList.add('d-none');
-
-    const html = trips.map(trip => {
+    // Only show the first 5 trips
+    trips = trips.slice(0, 5);
+    let html = '';
+    // Layout: 2 columns
+    html += '<div class="trending-row trending-row-featured" style="display: flex; gap: 2rem;">';
+    // Column 1: Featured card
+    if (trips[0]) {
+      const trip = trips[0];
       const badgeHtml = trip.badge ? `<span class="trip-badge ${trip.badge}">${
         trip.badge === 'hot' ? '🔥 HOT' : 
         trip.badge === 'new' ? '✨ MỚI' : 
         '💰 SALE'
       }</span>` : '';
-
-      const title = currentLang === 'vi' 
-        ? `${trip.from} → ${trip.to}`
-        : `${trip.fromEn} → ${trip.toEn}`;
-
-      const description = currentLang === 'vi' 
-        ? trip.description 
-        : trip.descriptionEn;
-
-      const duration = currentLang === 'vi' 
-        ? trip.duration 
-        : trip.durationEn;
-
+      const title = currentLang === 'vi' ? `${trip.from} → ${trip.to}` : `${trip.fromEn} → ${trip.toEn}`;
+      const description = currentLang === 'vi' ? trip.description : trip.descriptionEn;
+      const duration = currentLang === 'vi' ? trip.duration : trip.durationEn;
       const bookNowText = currentLang === 'vi' ? 'Đặt ngay' : 'Book Now';
-
-      return `
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="trip-card card h-100 shadow-sm" data-trip-id="${trip.id}">
+      html += `
+        <div class="trending-featured-left" style="flex: 1; min-width: 0;">
+          <div class="trip-card card trending-large-card shadow-sm" data-trip-id="${trip.id}">
             ${badgeHtml}
             <img src="${trip.image}" class="card-img-top" alt="${title}">
             <div class="card-body">
@@ -251,64 +231,59 @@
           </div>
         </div>
       `;
-    }).join('');
-
+    }
+    // Column 2: 2x2 grid of small cards
+    html += '<div class="trending-featured-right" style="flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.5rem;">';
+    for (let i = 1; i <= 4; i++) {
+      if (trips[i]) {
+        const trip = trips[i];
+        const badgeHtml = trip.badge ? `<span class="trip-badge ${trip.badge}">${
+          trip.badge === 'hot' ? '🔥 HOT' : 
+          trip.badge === 'new' ? '✨ MỚI' : 
+          '💰 SALE'
+        }</span>` : '';
+        const title = currentLang === 'vi' ? `${trip.from} → ${trip.to}` : `${trip.fromEn} → ${trip.toEn}`;
+        const description = currentLang === 'vi' ? trip.description : trip.descriptionEn;
+        const duration = currentLang === 'vi' ? trip.duration : trip.durationEn;
+        const bookNowText = currentLang === 'vi' ? 'Đặt ngay' : 'Book Now';
+        html += `
+          <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trip.id}">
+            ${badgeHtml}
+            <img src="${trip.image}" class="card-img-top" alt="${title}">
+            <div class="card-body">
+              <h5 class="card-title">${title}</h5>
+              <p class="card-text text-muted small">${description}</p>
+              <div class="trip-meta">
+                <div class="trip-meta-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                  </svg>
+                  <span>${duration}</span>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="text-primary fw-bold">${trip.price.toLocaleString('vi-VN')}đ</span>
+                <a href="#" class="btn btn-sm btn-outline-primary">${bookNowText}</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+    html += '</div>';
+    html += '</div>';
     tripsGrid.innerHTML = html;
   }
 
-  // Filter trips
-  function filterTrips() {
-    const region = filterRegion.value;
-    const price = filterPrice.value;
-    const search = searchInput.value.toLowerCase().trim();
-
-    filteredTrips = tripsData.filter(trip => {
-      // Region filter
-      if (region && trip.region !== region) return false;
-
-      // Price filter
-      if (price === 'low' && trip.price >= 200000) return false;
-      if (price === 'medium' && (trip.price < 200000 || trip.price > 400000)) return false;
-      if (price === 'high' && trip.price <= 400000) return false;
-
-      // Search filter
-      if (search) {
-        const searchTerms = currentLang === 'vi'
-          ? `${trip.from} ${trip.to} ${trip.description}`.toLowerCase()
-          : `${trip.fromEn} ${trip.toEn} ${trip.descriptionEn}`.toLowerCase();
-        
-        if (!searchTerms.includes(search)) return false;
-      }
-
-      return true;
-    });
-
-    renderTrips(filteredTrips);
-  }
-
-  // Reset filters
-  function resetFilters() {
-    filterRegion.value = '';
-    filterPrice.value = '';
-    searchInput.value = '';
-    filteredTrips = [...tripsData];
-    renderTrips(filteredTrips);
-  }
-
-  // Event listeners
-  filterRegion.addEventListener('change', filterTrips);
-  filterPrice.addEventListener('change', filterTrips);
-  searchInput.addEventListener('input', filterTrips);
-  resetFilter.addEventListener('click', resetFilters);
 
   // Listen for language changes
   document.addEventListener('languageChanged', (e) => {
     currentLang = e.detail.lang;
-    renderTrips(filteredTrips);
+    renderTrips(tripsData);
   });
 
   // Initial render
-  renderTrips(filteredTrips);
+  renderTrips(tripsData);
 
   // Expose for external use
   window.trendingTrips = {

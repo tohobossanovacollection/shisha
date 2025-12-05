@@ -1,18 +1,162 @@
+/* Featured row: 1 large left, 2 stacked right */
+.trending-row-featured {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.trending-featured-left {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+}
+.trending-featured-right {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* Thu nhỏ thẻ lớn và nhỏ */
+.trending-large-card {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.trending-large-card .card-img-top {
+  height: 220px;
+}
+.trending-small-card {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.trending-small-card .card-img-top {
+  height: 50px;
+}
+
+.card-body {
+  min-height: 150px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto !important;
+}
+@media (max-width: 991px) {
+  .trending-row-featured {
+    flex-direction: column;
+  }
+  .trending-featured-left, .trending-featured-right {
+    flex: 1 1 0;
+  }
+  .trending-large-card {
+    height: 50px;
+  }
+  .trending-large-card .card-img-top {
+    height: 10px;
+  }
+  .trending-small-card {
+    height: 10px;
+  }
+  .trending-small-card .card-img-top {
+    height: 36px;
+  }
+}
+/* Trending custom layout */
+.trending-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.trending-row-large {
+  flex-direction: row;
+}
+.trending-large-card {
+  flex: 2 1 0;
+  min-width: 0;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.trending-large-card + .trending-large-card {
+  flex: 1 1 0;
+}
+.trending-large-card .card-img-top {
+  height: 100px;
+}
+.trending-row-small {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.trending-small-card {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.trending-small-card .card-img-top {
+  height: 50px;
+}
+@media (max-width: 991px) {
+  .trending-row-large {
+    flex-direction: column;
+  }
+  .trending-large-card, .trending-large-card + .trending-large-card {
+    flex: 1 1 0;
+    height: 50px;
+  }
+  .trending-large-card .card-img-top {
+    height: 50px;
+  }
+  .trending-row-small {
+    grid-template-columns: 1fr;
+  }
+  .trending-small-card {
+    height: 180px;
+  }
+  .trending-small-card .card-img-top {
+    height: 80px;
+  }
+}
 /* Trending Page Specific Styles */
 
 .page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/trees-forest-1920x1080-nature-forests-hd-art-wallpaper-preview.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
-  padding: 3rem 0 2.5rem;
+  padding: 4rem 1rem 3rem;
   margin-bottom: 2rem;
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 1;
 }
 
 .page-header h1 {
   margin: 0;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(78, 220, 137, 0.5);
 }
 
 .page-header .lead {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  margin: 0.5rem 0 0;
 }
 
 /* Filter Section */
@@ -39,53 +183,87 @@
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
 }
 
-/* Empty State */
-.empty-icon {
-  font-size: 4rem;
-  opacity: 0.3;
+/* Sidebar Filter Links */
+.filter-link {
+  color: #555;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-/* Active nav link */
-/* .nav-link.active {
-  color: #0b5 !important;
-  font-weight: 600;
-  position: relative;
+.filter-link:hover {
+  color: #27ae60;
+  transform: translateX(5px);
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0.75rem;
-  right: 0.75rem;
-  height: 3px;
-  background: #0b5;
-  border-radius: 3px 3px 0 0;
-} */
+.filter-link.active {
+  color: #27ae60;
+  font-weight: 700;
+}
+
+/* Trip Grid Layout */
+/* Remove grid from #tripsGrid to allow custom layout to stretch full width */
+#tripsGrid {
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
 
 /* Trip Card Enhancements for Trending Page */
-.trending-trips .trip-card {
+.trip-card {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
-.trending-trips .trip-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 0;
-  pointer-events: none;
+.trip-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-.trending-trips .trip-card:hover::before {
-  opacity: 1;
+.trip-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.trip-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.trip-card .card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  flex: 1 1 auto;
+  margin-top: auto !important;
+}
+
+.trip-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+  overflow: visible;
+  display: block;
+}
+
+.trip-card .card-text {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  white-space: normal;
+  overflow: visible;
+  display: block;
 }
 
 /* Badge for hot trips */
@@ -132,12 +310,18 @@
 }
 
 /* Price highlight */
-.trending-trips .text-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
+
+/* Loading animation */
+/* Empty State */
+#emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+  margin-bottom: 1rem;
 }
 
 /* Loading animation */
