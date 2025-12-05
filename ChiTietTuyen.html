@@ -313,5 +313,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/ChiTietTuyen.js"></script>
+    <!-- Booking drawer overlay + panel -->
+    <div id="bookingOverlay" class="drawer-overlay" onclick="closeBookingDrawer()" aria-hidden="true"></div>
+    <aside id="bookingDrawer" class="booking-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title">Chi tiết chọn vé</div>
+        <button type="button" class="btn btn-sm btn-light" onclick="closeBookingDrawer()" aria-label="Đóng">✕</button>
+      </div>
+      <div class="drawer-body">
+        <div class="bd-summary">
+          <div class="bd-row"><div class="small-muted">Tuyến</div><div id="bdRoute" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted">Nhà xe</div><div id="bdBusName" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted">Giờ khởi hành</div><div id="bdDeparture" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted">Giá vé</div><div id="bdPrice" class="bd-value"></div></div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="small-muted">Số ghế còn lại</div>
+          <div id="bdRemaining" class="bd-remaining">-</div>
+        </div>
+
+        <div style="margin-top:14px">
+          <label for="bdQty" class="form-label small-muted">Số vé muốn mua</label>
+          <input id="bdQty" class="form-control qty-input" type="number" min="1" value="1" />
+        </div>
+      </div>
+      <div class="drawer-footer d-flex gap-2">
+        <button id="bdConfirm" class="btn-confirm flex-fill" type="button" onclick="confirmBooking()">Xác nhận</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="closeBookingDrawer()">Hủy</button>
+      </div>
+    </aside>
   </body>
 </html>

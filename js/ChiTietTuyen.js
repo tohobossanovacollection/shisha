@@ -337,7 +337,7 @@ function createBusCard(bus, routeInfo) {
             </div>
             
             <div class="bus-actions">
-                <button class="btn btn-book" onclick="bookTicket('${routeInfo.route}', '${bus.name}', '${bus.departure}', '${bus.price}', '${bus.dateISO}')">
+                <button class="btn btn-book" onclick="openBookingDrawer('${routeInfo.route}', '${bus.name}', '${bus.departure}', '${bus.price}', '${bus.dateISO}')">
                     Chọn chuyến
                 </button>
             </div>
@@ -699,6 +699,125 @@ function bookTicket(route, busName, departure, price, dateISO) {
         price: String(price),
         date: dateISO
     });
+    window.location.href = `DatVe.html?${params.toString()}`;
+}
+
+// Mở ngăn chọn vé (drawer) và điền thông tin chuyến được chọn
+function openBookingDrawer(route, busName, departure, price, dateISO) {
+    try {
+        const overlay = document.getElementById('bookingOverlay');
+        const drawer = document.getElementById('bookingDrawer');
+        const bdRoute = document.getElementById('bdRoute');
+        const bdBusName = document.getElementById('bdBusName');
+        const bdDeparture = document.getElementById('bdDeparture');
+        const bdPrice = document.getElementById('bdPrice');
+        const bdRemaining = document.getElementById('bdRemaining');
+        const bdQty = document.getElementById('bdQty');
+        const bdConfirm = document.getElementById('bdConfirm');
+
+        bdRoute.textContent = route || '-';
+        bdBusName.textContent = busName || '-';
+        bdDeparture.textContent = departure || '-';
+        bdPrice.textContent = (price ? (String(price) + ' ₫') : '-');
+
+        // Tìm chuyến tương ứng trong allBuses để lấy số ghế còn lại
+        let remaining = null;
+        if (Array.isArray(allBuses)) {
+            const match = allBuses.find(b => b.name === busName && b.dateISO === dateISO && b.departure === departure);
+            if (match) remaining = Number(match.availableSeats || 0);
+        }
+        bdRemaining.textContent = (remaining !== null) ? (remaining + ' ghế') : 'N/A';
+
+        // Cài giới hạn cho input số vé
+        bdQty.value = 1;
+        if (remaining !== null) {
+            bdQty.max = String(Math.max(1, remaining));
+            bdQty.min = '1';
+            bdQty.disabled = false;
+        } else {
+            bdQty.removeAttribute('max');
+            bdQty.min = '1';
+            bdQty.disabled = true;
+        }
+
+        // Khi người dùng nhập: cho phép xóa '1' khi focus (để trống),
+        // cho phép nhập 0/giá trị tạm thời khi gõ; nhưng khi hoàn tất
+        // (onchange hoặc Enter) sẽ ép giá trị cuối cùng vào [1, remaining]
+        const clampQtyFinal = () => {
+            if (!bdQty) return;
+            const minV = 1;
+            const maxV = remaining !== null ? Math.max(1, Number(remaining)) : null;
+            let raw = bdQty.value == null ? '' : String(bdQty.value).trim();
+            let v = parseInt(raw, 10);
+            if (isNaN(v) || v < minV) v = minV;
+            if (maxV !== null && v > maxV) v = maxV;
+            bdQty.value = String(v);
+        };
+
+        // Khi focus: không tự động xóa giá trị (giữ 1) — người dùng có thể xóa thủ công nếu muốn
+        // (Tránh tự động xóa để không làm mất dữ liệu vô tình)
+
+        // Khi nhập (typing): cho phép để trống; nếu nhập số > max thì hạ xuống max (giữ trải nghiệm realtime)
+        bdQty.oninput = () => {
+            if (!bdQty) return;
+            const txt = String(bdQty.value || '').trim();
+            if (txt === '') return; // allow empty while typing
+            const maxV = remaining !== null ? Math.max(1, Number(remaining)) : null;
+            let v = parseInt(txt, 10);
+            if (isNaN(v)) return;
+            if (maxV !== null && v > maxV) v = maxV;
+            if (v < 0) v = 0; // allow 0 while typing; will be fixed on finalize
+            bdQty.value = String(v);
+        };
+
+        // Khi rời trường hoặc thay đổi hoàn tất: clamp và blur để remove cursor
+        bdQty.onchange = () => { clampQtyFinal(); bdQty.blur(); };
+        bdQty.onkeydown = (e) => { if (e.key === 'Enter') { clampQtyFinal(); bdQty.blur(); } };
+
+        // Lưu dữ liệu tạm lên nút xác nhận để dùng khi xác nhận
+        if (bdConfirm) {
+            bdConfirm.dataset.route = route || '';
+            bdConfirm.dataset.bus = busName || '';
+            bdConfirm.dataset.departure = departure || '';
+            bdConfirm.dataset.price = price || '';
+            bdConfirm.dataset.date = dateISO || '';
+            bdConfirm.dataset.remaining = remaining !== null ? String(remaining) : '0';
+        }
+
+        if (overlay) overlay.classList.add('open');
+        if (drawer) drawer.classList.add('open');
+    } catch (e) {
+        console.error('openBookingDrawer error', e);
+    }
+}
+
+function closeBookingDrawer() {
+    const overlay = document.getElementById('bookingOverlay');
+    const drawer = document.getElementById('bookingDrawer');
+    if (overlay) overlay.classList.remove('open');
+    if (drawer) drawer.classList.remove('open');
+}
+
+function confirmBooking() {
+    const btn = document.getElementById('bdConfirm');
+    if (!btn) return;
+    const route = btn.dataset.route || '';
+    const bus = btn.dataset.bus || '';
+    const departure = btn.dataset.departure || '';
+    const price = btn.dataset.price || '';
+    const date = btn.dataset.date || '';
+    const remaining = parseInt(btn.dataset.remaining || '0', 10) || 0;
+    const qtyInput = document.getElementById('bdQty');
+    let qty = 1;
+    if (qtyInput) qty = parseInt(qtyInput.value || '1', 10) || 1;
+    if (qty < 1) qty = 1;
+    if (qty > remaining) {
+        alert('Số vé vượt quá số ghế còn lại. Vui lòng nhập số nhỏ hơn hoặc bằng ' + remaining + '.');
+        return;
+    }
+
+    // Chuyển sang trang đặt vé với tham số số lượng
+    const params = new URLSearchParams({ route, bus, departure, price: String(price), date, qty: String(qty) });
     window.location.href = `DatVe.html?${params.toString()}`;
 }
 
