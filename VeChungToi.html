@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Về chúng tôi | LobiBus</title>
+    <link rel="icon" href="images/logo.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/VeChungToi.css">
+  </head>
+  <body>
+    <header class="site-header bg-white shadow-sm">
+      <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="LobiBus logo" class="logo">
+        <span class="brand-name h5 mb-0">LobiBus</span>
+      </div></a>
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="nav-link px-3" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="nav-link px-3" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="nav-link px-3" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
+            <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">
+              <img src="images/viet-nam.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+              Tiếng Việt
+            </button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">
+              <img src="images/united-states.png" alt="USA" style="width: 20px; height: 15px; object-fit: cover;">
+              English
+            </button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+    </header>
+
+    <main class="container my-5">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <section class="about-hero mb-4">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-7">
+              <h1>LobiBus - Kết nối hành trình Việt</h1>
+              <p>Chúng tôi xây dựng hệ sinh thái đặt vé xe khách minh bạch, an toàn và thân thiện, giúp hàng triệu hành khách di chuyển thuận tiện mỗi ngày.</p>
+              <div class="about-badges">
+                <span class="about-badge">An toàn & minh bạch</span>
+                <span class="about-badge">Hỗ trợ 24/7</span>
+                <span class="about-badge">Đối tác uy tín</span>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="about-stats">
+                <div class="about-stat-card">
+                  <div class="about-stat-number">2M+</div>
+                  <div>Khách hàng sử dụng</div>
+                </div>
+                <div class="about-stat-card">
+                  <div class="about-stat-number">500+</div>
+                  <div>Nhà xe đối tác</div>
+                </div>
+                <div class="about-stat-card">
+                  <div class="about-stat-number">63</div>
+                  <div>Tỉnh/TP phủ sóng</div>
+                </div>
+                <div class="about-stat-card">
+                  <div class="about-stat-number">98%</div>
+                  <div>Đánh giá hài lòng</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4">
+          <h2 class="about-section-title">Giới thiệu</h2>
+          <div class="about-intro">
+            <p><strong>Chào mừng</strong> đến với nền tảng LobiBus, được thiết kế và vận hành bởi CÔNG TY TNHH LobiBus Việt Nam. Chúng tôi mang đến trải nghiệm đặt vé xe khách trực tuyến minh bạch, an toàn và tiện lợi cho hành khách trên toàn quốc.</p>
+            <p><strong>LobiBus là ai?</strong> LobiBus cho phép nhà xe đăng tải, quản lý lịch trình và ghế ngồi trực tuyến; đồng thời giúp hành khách xem, so sánh và đặt vé chỉ với vài thao tác. Chúng tôi không trực tiếp cung cấp dịch vụ vận chuyển, mà đóng vai trò cầu nối đáng tin cậy giữa hành khách và nhà xe.</p>
+            <p class="mb-0"><strong>Tại sao chọn LobiBus?</strong> Quy trình đặt vé đơn giản, hiển thị chỗ ngồi trực quan, thanh toán đa phương thức và đội ngũ chăm sóc khách hàng đồng hành 24/7.</p>
+            <p class="mb-0"><strong>Liên hệ:</strong> contact@lobibus.vn<br><strong>Hotline:</strong> 1900 989901<br><strong>Địa chỉ:</strong> Số 12, Phố Chùa Bộc, Hà Nội</p>
+          </div>
+        </section>
+
+        <section class="mb-4">
+          <h2 class="about-section-title">Sứ mệnh & tầm nhìn</h2>
+          <p class="about-section-subtext">LobiBus hướng tới trải nghiệm di chuyển liền mạch, đáng tin cậy cho mọi hành trình.</p>
+          <div class="about-card-grid">
+            <div class="about-card">
+              <span class="about-pill">Sứ mệnh</span>
+              <p>Đưa công nghệ vào từng chặng đường, giúp hành khách đặt vé nhanh, rõ ràng về giá, thời gian và chất lượng.</p>
+            </div>
+            <div class="about-card">
+              <span class="about-pill">Tầm nhìn</span>
+              <p>Trở thành nền tảng đặt xe khách được tin dùng nhất Việt Nam, mở rộng kết nối liên vận trong khu vực.</p>
+            </div>
+            <div class="about-card">
+              <span class="about-pill">Giá trị cốt lõi</span>
+              <p>Minh bạch - An toàn - Đồng hành. Mỗi quyết định đều đặt lợi ích hành khách làm trung tâm.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-4">
+          <h2 class="about-section-title">Hành trình phát triển</h2>
+          <p class="about-section-subtext">Những cột mốc tiêu biểu trên chặng đường của LobiBus.</p>
+          <div class="about-timeline">
+            <div class="about-step">
+              <strong>2019</strong>
+              <span>Ra mắt LobiBus với 20 đối tác xe khách tại Hà Nội & TP.HCM.</span>
+            </div>
+            <div class="about-step">
+              <strong>2021</strong>
+              <span>Mở rộng 45 tỉnh/TP, tích hợp thanh toán thẻ và ví điện tử lớn.</span>
+            </div>
+            <div class="about-step">
+              <strong>2023</strong>
+              <span>Đạt mốc 1 triệu lượt đặt, bổ sung bảo hiểm hành trình và hỗ trợ 24/7.</span>
+            </div>
+            <div class="about-step">
+              <strong>2025</strong>
+              <span>Phủ 63 tỉnh/TP, ra mắt trợ lý AI gợi ý chuyến và chăm sóc khách hàng.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-5">
+          <h2 class="about-section-title">Chúng tôi làm gì để bạn yên tâm?</h2>
+          <p class="about-section-subtext">Cam kết chất lượng dịch vụ trên mỗi vé xe.</p>
+          <div class="about-card-grid">
+            <div class="about-card">
+              <span class="about-pill">Chọn lọc đối tác</span>
+              <p>Chỉ hợp tác với nhà xe có giấy phép đầy đủ, quy trình an toàn rõ ràng và phản hồi khách hàng tốt.</p>
+            </div>
+            <div class="about-card">
+              <span class="about-pill">Giá minh bạch</span>
+              <p>Hiển thị phí rõ ràng, không phụ thu ẩn; hoàn hủy theo chính sách rõ ràng của từng hãng.</p>
+            </div>
+            <div class="about-card">
+              <span class="about-pill">Hỗ trợ 24/7</span>
+              <p>Đội ngũ chăm sóc khách hàng sẵn sàng qua hotline, email và chat để xử lý sự cố khẩn cấp.</p>
+            </div>
+            <div class="about-card">
+              <span class="about-pill">Bảo mật</span>
+              <p>Mã hóa thanh toán, không lưu thông tin thẻ; tuân thủ quy định bảo vệ dữ liệu cá nhân.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-cta">
+          <h3>Đồng hành cùng LobiBus</h3>
+          <p>Nếu bạn là nhà xe uy tín hoặc muốn hợp tác, hãy liên hệ với chúng tôi để cùng nâng tầm trải nghiệm di chuyển.</p>
+          <a href="mailto:partner@lobibus.com">Liên hệ hợp tác</a>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer mt-4">
+      <div class="container">
+        <div class="row align-items-start py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <img src="images/logo.svg" alt="LobiBus logo" style="width: 40px; height: 40px;">
+              <strong style="font-size: 1.8rem; color: #27ae60;">LobiBus</strong>
+            </div>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0936 363 363</div>
+              <div>Email: <a href="mailto:cskh@lobibus.com">cskh@lobibus.com</a></div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+            <div class="mt-4">
+              <div class="mb-2" style="font-weight: 600; color: white;">Phương thức thanh toán:</div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <img src="images/visa.png" alt="Visa" style="height: 32px;">
+                <img src="images/mastercard.png" alt="Mastercard" style="height: 32px;">
+                <img src="images/momo.png" alt="Momo" style="height: 32px;">
+                <img src="images/zalopay.png" alt="ZaloPay" style="height: 32px;">
+                <img src="images/shopeepay.png" alt="ShopeePay" style="height: 32px;">
+                <img src="images/smartpay.png" alt="SmartPay" style="height: 32px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-start justify-content-md-start mt-3 mt-md-0">
+            <div class="footer-links">
+              <div class="row g-4">
+                <div class="col-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Thông tin</strong></li>
+                    <li class="mb-2"><a href="ChinhSachBaoMat.html" style="white-space: nowrap;">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="DieuKhoanSuDung.html" style="white-space: nowrap;">Điều khoản sử dụng</a></li>
+                    <li class="mb-2"><a href="CauHoiThuongGap.html" style="white-space: nowrap;">Câu hỏi thường gặp</a></li>
+                    <li class="mb-2"><a href="VeChungToi.html" style="white-space: nowrap;">Về chúng tôi</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 ps-5">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Dịch vụ</strong></li>
+                    <li class="mb-2"><a href="index.html" style="white-space: nowrap;">Đặt vé xe</a></li>
+                    <li class="mb-2"><a href="TraCuu.html" style="white-space: nowrap;">Tra cứu mã đặt vé</a></li>
+                    <li class="mb-2"><a href="trending.html" style="white-space: nowrap;">Chuyến đi hot trend</a></li>
+                    <li class="mb-2"><a href="contact.html" style="white-space: nowrap;">Liên hệ</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-4">
+                <img src="images/BCT.png" alt="Bộ Công Thương" style="height: 70px; background: transparent;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 lobibus.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

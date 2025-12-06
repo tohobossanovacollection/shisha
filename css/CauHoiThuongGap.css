@@ -1,0 +1,161 @@
+.faq-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  min-height: 600px;
+}
+
+.faq-left-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.faq-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, #f6fff9 0%, #fdfefb 100%);
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.faq-search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: #e8f5e9;
+  border-radius: 10px;
+  border: 1px solid #d6edd9;
+}
+
+.faq-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.96rem;
+  color: #1f2933;
+  background: transparent;
+}
+
+.faq-search-input::placeholder {
+  color: #7a8a91;
+}
+
+.faq-list {
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  padding: 16px;
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.faq-item {
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: white;
+  border-left: 4px solid #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.faq-item:hover {
+  background: #e8f5e9;
+  border-left-color: #27ae60;
+  transform: translateX(5px);
+}
+
+.faq-item.active {
+  background: #27ae60;
+  color: white;
+  border-left-color: #1e8449;
+  font-weight: 600;
+}
+
+.faq-content {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+}
+
+.faq-answer {
+  display: none;
+}
+
+.faq-answer.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.answer-title {
+  color: #27ae60;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #27ae60;
+}
+
+.answer-text {
+  color: #333;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.answer-text p {
+  margin-bottom: 15px;
+}
+
+.answer-text ul,
+.answer-text ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.answer-text li {
+  margin-bottom: 8px;
+}
+
+.answer-text strong {
+  color: #1e8449;
+}
+
+.no-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #999;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .faq-list {
+    max-height: 400px;
+  }
+}

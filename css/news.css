@@ -36,19 +36,21 @@
 .news-item {
   transition: all 0.3s ease;
   cursor: pointer;
+  border: 2px solid transparent;
+  overflow: hidden;
 }
 
 .news-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15) !important;
+  border-color: #27ae60;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2) !important;
 }
 
 .news-item .card-img-top {
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .news-item:hover .card-img-top {
-  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 .news-item .card-body {
