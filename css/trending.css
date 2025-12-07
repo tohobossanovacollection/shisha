@@ -1,37 +1,48 @@
 /* Featured row: 1 large left, 2 stacked right */
+/* Row 1: 1 thẻ lớn bên trái, 2 thẻ nhỏ bên phải xếp ngang */
 .trending-row-featured {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   margin-bottom: 2rem;
-}
 .trending-featured-left {
-  flex: 1 1 0;
+  flex: 1 1 50%;
   min-width: 0;
-  display: flex;
 }
 .trending-featured-right {
-  flex: 1 1 0;
+  flex: 1 1 50%;
   min-width: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1.5rem;
 }
 /* Thu nhỏ thẻ lớn và nhỏ */
+/* Card lớn và nhỏ */
 .trending-large-card {
-  height: 100px;
+  min-height: 550px;
   display: flex;
   flex-direction: column;
 }
 .trending-large-card .card-img-top {
-  height: 220px;
+  height: 320px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 .trending-small-card {
-  height: 100px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
 .trending-small-card .card-img-top {
-  height: 50px;
+  height: 140px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+/* Overlay title on card image */
+.trip-card .fw-bold.text-white {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  letter-spacing: 0.5px;
 }
 
 .card-body {
@@ -44,21 +55,26 @@
 @media (max-width: 991px) {
   .trending-row-featured {
     flex-direction: column;
+    gap: 1.5rem;
   }
   .trending-featured-left, .trending-featured-right {
-    flex: 1 1 0;
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .trending-featured-right {
+    flex-direction: column;
+  }
+  .trending-row-small {
+    grid-template-columns: 1fr;
   }
   .trending-large-card {
-    height: 50px;
+    min-height: 220px;
   }
   .trending-large-card .card-img-top {
-    height: 10px;
-  }
-  .trending-small-card {
-    height: 10px;
+    height: 140px;
   }
   .trending-small-card .card-img-top {
-    height: 36px;
+    height: 100px;
   }
 }
 /* Trending custom layout */
@@ -84,39 +100,34 @@
 .trending-large-card .card-img-top {
   height: 100px;
 }
+/* Row 2: 4 thẻ nhỏ xếp ngang */
 .trending-row-small {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
-.trending-small-card {
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-}
-.trending-small-card .card-img-top {
-  height: 50px;
-}
 @media (max-width: 991px) {
-  .trending-row-large {
+  .trending-row-featured {
     flex-direction: column;
+    gap: 1.5rem;
   }
-  .trending-large-card, .trending-large-card + .trending-large-card {
-    flex: 1 1 0;
-    height: 50px;
+  .trending-featured-left, .trending-featured-right {
+    flex: 1 1 100%;
+    min-width: 0;
   }
-  .trending-large-card .card-img-top {
-    height: 50px;
+  .trending-featured-right {
+    flex-direction: column;
   }
   .trending-row-small {
     grid-template-columns: 1fr;
   }
-  .trending-small-card {
+  .trending-large-card .card-img-top {
     height: 180px;
   }
   .trending-small-card .card-img-top {
-    height: 80px;
+    height: 100px;
   }
+}
 }
 /* Trending Page Specific Styles */
 

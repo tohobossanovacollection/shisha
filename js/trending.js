@@ -190,80 +190,101 @@
 
   // Render trips
   function renderTrips(trips) {
-    // Only show the first 5 trips
-    trips = trips.slice(0, 5);
+    // Show at least 7 trips for layout
+    trips = trips.slice(0, 7);
     let html = '';
-    // Layout: 2 columns
-    html += '<div class="trending-row trending-row-featured" style="display: flex; gap: 2rem;">';
-    // Column 1: Featured card
+    // Row 1: 1 large left, 2 small right (xếp ngang)
+    html += '<div class="trending-row trending-row-featured mb-4" style="display: flex; gap: 2rem;">';
+    // Card lớn
+    html += '<div class="trending-featured-left" style="flex: 1 1 50%; min-width: 0;">';
     if (trips[0]) {
       const trip = trips[0];
-      const badgeHtml = trip.badge ? `<span class="trip-badge ${trip.badge}">${
+      const badgeHtml = trip.badge ? `<span class=\"trip-badge ${trip.badge}\">${
         trip.badge === 'hot' ? '🔥 HOT' : 
         trip.badge === 'new' ? '✨ MỚI' : 
         '💰 SALE'
       }</span>` : '';
-      const title = currentLang === 'vi' ? `${trip.from} → ${trip.to}` : `${trip.fromEn} → ${trip.toEn}`;
-      const description = currentLang === 'vi' ? trip.description : trip.descriptionEn;
-      const duration = currentLang === 'vi' ? trip.duration : trip.durationEn;
-      const bookNowText = currentLang === 'vi' ? 'Đặt ngay' : 'Book Now';
       html += `
-        <div class="trending-featured-left" style="flex: 1; min-width: 0;">
-          <div class="trip-card card trending-large-card shadow-sm" data-trip-id="${trip.id}">
+        <div class="trip-card card trending-large-card shadow-sm" data-trip-id="${trip.id}">
+          <div style="position:relative;">
+            <img src="${trip.image}" class="card-img-top" alt="${trip.from}" style="height:300px;object-fit:cover;">
             ${badgeHtml}
-            <img src="${trip.image}" class="card-img-top" alt="${title}">
-            <div class="card-body">
-              <h5 class="card-title">${title}</h5>
-              <p class="card-text text-muted small">${description}</p>
-              <div class="trip-meta">
-                <div class="trip-meta-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                  </svg>
-                  <span>${duration}</span>
+            <div class="fw-bold text-white" style="font-size:2rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.5rem 1rem;">Tuyến xe từ ${trip.from}</div>
+          </div>
+          <div class="card-body p-0">
+            <div class="p-3 pb-2">
+              <div class="text-white" style="opacity:1;">${trip.description}</div>
+            </div>
+            <div class="list-group list-group-flush">
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-bold" style="color:#27ae60;">${trips[1]?.to || ''}</div>
+                  <div class="small text-muted">310km - 8 giờ - 07/12/2025</div>
                 </div>
+                <div class="fw-bold" style="font-size:1.1rem;">260.000đ</div>
               </div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="text-primary fw-bold">${trip.price.toLocaleString('vi-VN')}đ</span>
-                <a href="#" class="btn btn-sm btn-outline-primary">${bookNowText}</a>
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-bold" style="color:#27ae60;">${trips[2]?.to || ''}</div>
+                  <div class="small text-muted">172km - 5 giờ - 07/12/2025</div>
+                </div>
+                <div class="fw-bold" style="font-size:1.1rem;">165.000đ</div>
+              </div>
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <div class="fw-bold" style="color:#27ae60;">Long Xuyên</div>
+                  <div class="small text-muted">209km - 5 giờ - 07/12/2025</div>
+                </div>
+                <div class="fw-bold" style="font-size:1.1rem;">200.000đ</div>
               </div>
             </div>
           </div>
         </div>
       `;
     }
-    // Column 2: 2x2 grid of small cards
-    html += '<div class="trending-featured-right" style="flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.5rem;">';
-    for (let i = 1; i <= 4; i++) {
+    html += '</div>';
+    // 2 card nhỏ bên phải
+    html += '<div class="trending-featured-right" style="flex: 1 1 50%; min-width: 0; display: flex; gap: 1.5rem;">';
+    for (let i = 1; i <= 2; i++) {
       if (trips[i]) {
-        const trip = trips[i];
-        const badgeHtml = trip.badge ? `<span class="trip-badge ${trip.badge}">${
-          trip.badge === 'hot' ? '🔥 HOT' : 
-          trip.badge === 'new' ? '✨ MỚI' : 
+        const badgeHtml = trips[i].badge ? `<span class=\"trip-badge ${trips[i].badge}\">${
+          trips[i].badge === 'hot' ? '🔥 HOT' : 
+          trips[i].badge === 'new' ? '✨ MỚI' : 
           '💰 SALE'
         }</span>` : '';
-        const title = currentLang === 'vi' ? `${trip.from} → ${trip.to}` : `${trip.fromEn} → ${trip.toEn}`;
-        const description = currentLang === 'vi' ? trip.description : trip.descriptionEn;
-        const duration = currentLang === 'vi' ? trip.duration : trip.durationEn;
-        const bookNowText = currentLang === 'vi' ? 'Đặt ngay' : 'Book Now';
         html += `
-          <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trip.id}">
-            ${badgeHtml}
-            <img src="${trip.image}" class="card-img-top" alt="${title}">
-            <div class="card-body">
-              <h5 class="card-title">${title}</h5>
-              <p class="card-text text-muted small">${description}</p>
-              <div class="trip-meta">
-                <div class="trip-meta-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                  </svg>
-                  <span>${duration}</span>
-                </div>
+          <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trips[i].id}" style="flex: 1;">
+            <div style="position:relative;">
+              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:180px;object-fit:cover;">
+              ${badgeHtml}
+              <div class="fw-bold text-white" style="font-size:1.3rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.3rem 0.7rem;">Tuyến xe từ ${trips[i].from}</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="p-3 pb-2">
+                <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
               </div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="text-primary fw-bold">${trip.price.toLocaleString('vi-VN')}đ</span>
-                <a href="#" class="btn btn-sm btn-outline-primary">${bookNowText}</a>
+              <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold" style="color:#27ae60;">${trips[i+1]?.to || ''}</div>
+                    <div class="small text-muted">300km - 8 giờ - 07/12/2025</div>
+                  </div>
+                  <div class="fw-bold" style="font-size:1.1rem;">260.000đ</div>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold" style="color:#27ae60;">${trips[i+2]?.to || ''}</div>
+                    <div class="small text-muted">700km - 14 giờ - 07/12/2025</div>
+                  </div>
+                  <div class="fw-bold" style="font-size:1.1rem;">430.000đ</div>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold" style="color:#27ae60;">Cần Thơ</div>
+                    <div class="small text-muted">464km - 11 giờ - 07/12/2025</div>
+                  </div>
+                  <div class="fw-bold" style="font-size:1.1rem;">445.000đ</div>
+                </div>
               </div>
             </div>
           </div>
@@ -271,6 +292,55 @@
       }
     }
     html += '</div>';
+    html += '</div>';
+    // Row 2: 4 small cards xếp ngang
+    html += '<div class="trending-row trending-row-small mt-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">';
+    for (let i = 3; i <= 6; i++) {
+      if (trips[i]) {
+        const badgeHtml = trips[i].badge ? `<span class=\"trip-badge ${trips[i].badge}\">${
+          trips[i].badge === 'hot' ? '🔥 HOT' : 
+          trips[i].badge === 'new' ? '✨ MỚI' : 
+          '💰 SALE'
+        }</span>` : '';
+        html += `
+          <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trips[i].id}">
+            <div style="position:relative;">
+              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:140px;object-fit:cover;">
+              ${badgeHtml}
+              <div class="fw-bold text-white" style="font-size:1.1rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.2rem 0.5rem;">Tuyến xe từ ${trips[i].from}</div>
+            </div>
+            <div class="card-body p-0">
+              <div class="p-3 pb-2">
+                <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
+              </div>
+              <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold" style="color:#27ae60;">${trips[i].to}</div>
+                    <div class="small text-muted">550km - 10 giờ - 07/12/2025</div>
+                  </div>
+                  <div class="fw-bold" style="font-size:1.1rem;">380.000đ</div>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold" style="color:#27ae60;">BX An Sương</div>
+                    <div class="small text-muted">990km - 20 giờ - 07/12/2025</div>
+                  </div>
+                  <div class="fw-bold" style="font-size:1.1rem;">495.000đ</div>
+                </div>
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold" style="color:#27ae60;">Nha Trang</div>
+                    <div class="small text-muted">550km - 10 giờ - 07/12/2025</div>
+                  </div>
+                  <div class="fw-bold" style="font-size:1.1rem;">380.000đ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
     html += '</div>';
     tripsGrid.innerHTML = html;
   }
