@@ -1,0 +1,80 @@
+/* Lookup page (TraCuu) responsive tweaks */
+.lookup-card {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 14px;
+}
+
+.lookup-result-wrapper {
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#lookupResult {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.ticket-result {
+  overflow-x: hidden;
+  border-radius: 8px;
+}
+
+.ticket-result .row {
+  word-wrap: break-word;
+}
+
+.ticket-result strong {
+  word-break: break-word;
+}
+
+/* Custom scrollbar styling for result wrapper */
+.lookup-result-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lookup-result-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.lookup-result-wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+.lookup-result-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media (max-width: 576px) {
+  .lookup-card {
+    padding: 1rem !important;
+  }
+  .lookup-card .row {
+    margin: 0;
+  }
+  .lookup-card .form-label {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+  .lookup-card .form-control,
+  .lookup-card .btn {
+    font-size: 1rem;
+  }
+  #lookupResult {
+    max-height: 50vh;
+    font-size: 0.95rem;
+  }
+  #lookupResult .ticket-card {
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (min-width: 577px) {
+  .lookup-card {
+    padding: 1.5rem !important;
+  }
+}

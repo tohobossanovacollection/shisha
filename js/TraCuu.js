@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hiển thị thông tin
     lookupResult.innerHTML = `
-      <div class="ticket-result border rounded-3 p-3" style="background: white; max-height: 375px;">
+      <div class="ticket-result border rounded-3 p-3" style="background: white;">
         <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
           <img src="images/logo.svg" alt="LobiBus" style="width: 40px; height: 40px;">
           <h5 class="ms-2 mb-0">LobiBus</h5>
