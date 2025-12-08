@@ -66,16 +66,17 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container my-5">
+    <main class="my-5">
       <section class="lookup-section">
-        <div class="card p-4 shadow-sm lookup-card">
+        <div class="container px-2 px-md-0">
+        <div class="card p-3 p-md-4 shadow-sm lookup-card">
           <form id="lookupForm">
-            <div class="row g-3 mb-3">
-              <div class="col-md-6">
+            <div class="row g-2 g-md-3 mb-3">
+              <div class="col-12 col-md-6">
                 <label for="bookingCode" class="form-label">Mã đặt vé</label>
                 <input type="text" class="form-control" id="bookingCode" placeholder="Nhập mã đặt vé của bạn">
               </div>
-              <div class="col-md-6">
+              <div class="col-12 col-md-6">
                 <label for="phoneNumber" class="form-label">Số điện thoại</label>
                 <input type="tel" class="form-control" id="phoneNumber" placeholder="Nhập số điện thoại đặt vé">
               </div>
@@ -87,6 +88,7 @@
           <div id="lookupResult" class="mt-4">
             <!-- Kết quả tra cứu sẽ hiển thị ở đây -->
           </div>
+        </div>
         </div>
       </section>
     </main>
