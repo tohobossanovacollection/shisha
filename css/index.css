@@ -351,7 +351,7 @@ header.site-header {
 .testimonial-card.centered .testi-body { justify-content:center; }
 .testimonial-card .testi-avatar { width:96px; height:96px; object-fit:cover; border-radius:6px; }
 .testimonial-card .testi-body { flex:1 }
-.testi-name { color:#1e73be; margin:0 0 0.25rem; font-size:1.15rem }
+.testi-name { color:#16a34a; margin:0 0 0.25rem; font-size:1.15rem }
 .testi-role { color:#666; font-size:0.95rem; margin-bottom:0.5rem }
 .testi-text { color:#333; font-size:0.95rem; line-height:1.6 }
 
@@ -368,12 +368,12 @@ header.site-header {
 	pointer-events:auto;
 }
 #testimonialsCarousel .carousel-indicators button {
-	width:12px; height:12px; border-radius:50%; border:2px solid #2f93ff; background:transparent; opacity:1; padding:0; cursor:pointer;
+	width:12px; height:12px; border-radius:50%; border:2px solid #16a34a; background:transparent; opacity:1; padding:0; cursor:pointer;
 	display:inline-flex; align-items:center; justify-content:center; transition:transform 160ms ease;
 }
 #testimonialsCarousel .carousel-indicators button:hover { transform:scale(1.08); }
 #testimonialsCarousel .carousel-indicators button.active {
-	background:#2f93ff; border-color:#2f93ff;
+	background:#16a34a; border-color:#16a34a;
 }
 
 /* Ensure there's breathing room below testimonials so indicators don't overlap following sections */
@@ -449,6 +449,7 @@ header.site-header {
 .trending-trips .trip-card .text-primary {
   font-size: 1.05rem;
   font-weight: 700;
+  color: #16a34a !important;
 }
 
 .trending-trips .trip-card .btn-sm {
