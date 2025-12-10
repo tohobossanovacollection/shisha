@@ -68,7 +68,7 @@
       <section class="route-info container my-4">
         <div class="card p-4 shadow-sm">
           <div class="d-flex align-items-center gap-2 mb-3">
-            <a href="LichTrinh.html" class="btn btn-outline-secondary btn-sm">← Quay lại</a>
+            <a href="LichTrinh.html" class="btn btn-outline-secondary btn-sm" data-i18n="back">← Quay lại</a>
           </div>
           <!-- Ảnh minh họa cho tuyến (chung card) -->
           <div class="route-thumb mb-3">
@@ -77,10 +77,10 @@
           <h2 class="mb-3" id="routeTitle">Tuyến: <span id="routeName">Đang tải...</span></h2>
           <div class="row">
             <div class="col-md-6">
-              <strong>Quãng đường:</strong> <span id="distance">-</span>
+              <strong data-i18n="distance">Quãng đường:</strong> <span id="distance">-</span>
             </div>
             <div class="col-md-6">
-              <strong>Thời gian dự kiến:</strong> <span id="duration">-</span>
+              <strong data-i18n="estimated_duration">Thời gian dự kiến:</strong> <span id="duration">-</span>
             </div>
           </div>
         </div>
@@ -94,15 +94,15 @@
             <!-- Date Filter Card -->
             <div class="card sidebar-card mb-4">
               <div class="card-body">
-                <h5 class="card-title mb-3">Chọn ngày khởi hành</h5>
+                <h5 class="card-title mb-3" data-i18n="select_date">Chọn ngày khởi hành</h5>
                 <div class="row align-items-end">
                   <div class="col-12">
-                    <label for="dateFilter" class="form-label">Ngày đi</label>
+                    <label for="dateFilter" class="form-label" data-i18n="departure_date">Ngày đi</label>
                     <input type="date" id="dateFilter" class="form-control" min="2025-01-01" max="2025-12-30">
                   </div>
                   <div class="col-12 d-flex gap-2 mt-3 filter-actions">
-                    <button id="btnFilterDate" class="btn btn-success flex-fill">Tìm chuyến</button>
-                    <button id="btnClearDate" class="btn btn-outline-secondary flex-fill">Xem tất cả</button>
+                    <button id="btnFilterDate" class="btn btn-success flex-fill" data-i18n="search_trip">Tìm chuyến</button>
+                    <button id="btnClearDate" class="btn btn-outline-secondary flex-fill" data-i18n="view_all">Xem tất cả</button>
                   </div>
                 </div>
               </div>
@@ -111,31 +111,31 @@
             <!-- Sort Options Card -->
             <div class="card sidebar-card">
               <div class="card-body">
-                <h5 class="card-title mb-3">Sắp xếp</h5>
+                <h5 class="card-title mb-3" data-i18n="sort">Sắp xếp</h5>
                 <div class="sort-options">
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sortOption" id="sortDefault" value="default" checked>
-                  <label class="form-check-label" for="sortDefault">Mặc định</label>
+                  <label class="form-check-label" for="sortDefault" data-i18n="default">Mặc định</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sortOption" id="sortEarly" value="early">
-                  <label class="form-check-label" for="sortEarly">Giờ đi sớm nhất</label>
+                  <label class="form-check-label" for="sortEarly" data-i18n="earliest_departure">Giờ đi sớm nhất</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sortOption" id="sortLate" value="late">
-                  <label class="form-check-label" for="sortLate">Giờ đi muộn nhất</label>
+                  <label class="form-check-label" for="sortLate" data-i18n="latest_departure">Giờ đi muộn nhất</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sortOption" id="sortRating" value="rating">
-                  <label class="form-check-label" for="sortRating">Đánh giá cao nhất</label>
+                  <label class="form-check-label" for="sortRating" data-i18n="highest_rating">Đánh giá cao nhất</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sortOption" id="sortPriceAsc" value="priceAsc">
-                  <label class="form-check-label" for="sortPriceAsc">Giá tăng dần</label>
+                  <label class="form-check-label" for="sortPriceAsc" data-i18n="price_ascending">Giá tăng dần</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="sortOption" id="sortPriceDesc" value="priceDesc">
-                  <label class="form-check-label" for="sortPriceDesc">Giá giảm dần</label>
+                  <label class="form-check-label" for="sortPriceDesc" data-i18n="price_descending">Giá giảm dần</label>
                 </div>
                 </div>
               </div>
@@ -145,13 +145,13 @@
             <div class="card sidebar-card mt-3">
               <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <h5 class="card-title mb-0">Bộ lọc</h5>
-                  <a id="filterClearLink" role="button" class="text-primary text-decoration-none">Xóa</a>
+                  <h5 class="card-title mb-0" data-i18n="filter">Bộ lọc</h5>
+                  <a id="filterClearLink" role="button" class="text-primary text-decoration-none" data-i18n="clear">Xóa</a>
                 </div>
                 <div class="row g-3">
                   <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                      <label class="form-label mb-1">Giờ đi</label>
+                      <label class="form-label mb-1" data-i18n="departure_time">Giờ đi</label>
                       <span id="filterTimeBadge" class="badge rounded-pill text-bg-danger">05:00 - 24:00</span>
                     </div>
                     <div class="range-dual">
@@ -161,12 +161,12 @@
                     </div>
                     <div class="d-flex align-items-end gap-2 mt-2">
                       <div class="flex-grow-1">
-                        <label class="form-label small mb-1">Từ</label>
+                        <label class="form-label small mb-1" data-i18n="from">Từ</label>
                         <input type="text" id="filterTimeMinInput" class="form-control form-control-sm" value="05:00" readonly>
                       </div>
                       <span class="pb-1">-</span>
                       <div class="flex-grow-1">
-                        <label class="form-label small mb-1">Đến</label>
+                        <label class="form-label small mb-1" data-i18n="to">Đến</label>
                         <input type="text" id="filterTimeMaxInput" class="form-control form-control-sm" value="24:00" readonly>
                       </div>
                     </div>
@@ -174,7 +174,7 @@
 
                   <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                      <label class="form-label mb-0">Tên loại xe</label>
+                      <label class="form-label mb-0" data-i18n="bus_type">Tên loại xe</label>
                       <button class="btn btn-sm p-0" type="button" data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false" aria-controls="typeCollapse" style="border: none; background: transparent;">
                         <svg width="16" height="16" fill="currentColor" class="chevron-icon">
                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
@@ -188,7 +188,7 @@
 
                   <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                      <label class="form-label mb-1">Giá vé</label>
+                      <label class="form-label mb-1" data-i18n="ticket_price">Giá vé</label>
                       <span id="filterPriceBadge" class="badge rounded-pill text-bg-light">0 ₫ - 2,000,000 ₫</span>
                     </div>
                     <div class="range-dual">
@@ -204,7 +204,7 @@
 
                   <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                      <label class="form-label mb-0">Tiện ích</label>
+                      <label class="form-label mb-0" data-i18n="amenities">Tiện ích</label>
                       <button class="btn btn-sm p-0" type="button" data-bs-toggle="collapse" data-bs-target="#amenityCollapse" aria-expanded="false" aria-controls="amenityCollapse" style="border: none; background: transparent;">
                         <svg width="16" height="16" fill="currentColor" class="chevron-icon">
                           <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
@@ -231,7 +231,7 @@
 
                   <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between">
-                      <label class="form-label mb-1">Đánh giá</label>
+                      <label class="form-label mb-1" data-i18n="rating">Đánh giá</label>
                       <span id="filterRatingBadge" class="badge rounded-pill text-bg-danger">4 sao trở lên</span>
                     </div>
                     <div class="rating-options mt-1">
@@ -351,30 +351,30 @@
     <div id="bookingOverlay" class="drawer-overlay" onclick="closeBookingDrawer()" aria-hidden="true"></div>
     <aside id="bookingDrawer" class="booking-drawer" aria-hidden="true">
       <div class="drawer-header">
-        <div class="drawer-title">Chi tiết chọn vé</div>
+        <div class="drawer-title" data-i18n="booking_details">Chi tiết chọn vé</div>
         <button type="button" class="btn btn-sm btn-light" onclick="closeBookingDrawer()" aria-label="Đóng">✕</button>
       </div>
       <div class="drawer-body">
         <div class="bd-summary">
-          <div class="bd-row"><div class="small-muted">Tuyến</div><div id="bdRoute" class="bd-value"></div></div>
-          <div class="bd-row"><div class="small-muted">Nhà xe</div><div id="bdBusName" class="bd-value"></div></div>
-          <div class="bd-row"><div class="small-muted">Giờ khởi hành</div><div id="bdDeparture" class="bd-value"></div></div>
-          <div class="bd-row"><div class="small-muted">Giá vé</div><div id="bdPrice" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted" data-i18n="route">Tuyến</div><div id="bdRoute" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted" data-i18n="bus_company">Nhà xe</div><div id="bdBusName" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted" data-i18n="departure_time">Giờ khởi hành</div><div id="bdDeparture" class="bd-value"></div></div>
+          <div class="bd-row"><div class="small-muted" data-i18n="ticket_price">Giá vé</div><div id="bdPrice" class="bd-value"></div></div>
         </div>
 
         <div style="margin-top:14px">
-          <div class="small-muted">Số ghế còn lại</div>
+          <div class="small-muted" data-i18n="available_seats">Số ghế còn lại</div>
           <div id="bdRemaining" class="bd-remaining">-</div>
         </div>
 
         <div style="margin-top:14px">
-          <label for="bdQty" class="form-label small-muted">Số vé muốn mua</label>
+          <label for="bdQty" class="form-label small-muted" data-i18n="quantity_tickets">Số vé muốn mua</label>
           <input id="bdQty" class="form-control qty-input" type="number" min="1" value="1" />
         </div>
       </div>
       <div class="drawer-footer d-flex gap-2">
-        <button id="bdConfirm" class="btn-confirm flex-fill" type="button" onclick="confirmBooking()">Xác nhận</button>
-        <button class="btn btn-outline-secondary" type="button" onclick="closeBookingDrawer()">Hủy</button>
+        <button id="bdConfirm" class="btn-confirm flex-fill" type="button" onclick="confirmBooking()" data-i18n="confirm">Xác nhận</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="closeBookingDrawer()" data-i18n="cancel">Hủy</button>
       </div>
     </aside>
   </body>

@@ -361,14 +361,14 @@ button[aria-expanded="true"] .chevron-icon { transform: rotate(180deg); }
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
+    bottom: 0;
     width: 380px;
     max-width: 100%;
     background: #fff;
     box-shadow: -12px 0 30px rgba(0,0,0,0.18);
     transform: translateX(110%);
     transition: transform 280ms cubic-bezier(.2,.9,.2,1);
-    z-index: 1210; /* Cao hơn overlay (1200) để luôn sáng và tương tác được */
+    z-index: 1210;
     display: flex;
     flex-direction: column;
 }
