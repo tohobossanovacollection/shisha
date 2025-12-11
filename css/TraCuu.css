@@ -78,3 +78,34 @@
     padding: 1.5rem !important;
   }
 }
+
+/* Modal backdrop fix - ensure full page coverage */
+.modal-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  z-index: 1050 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5 !important;
+}
+
+.modal {
+  z-index: 1055 !important;
+}
+
+body.modal-open {
+  overflow: hidden !important;
+  padding-right: 0 !important;
+}
+
+html.modal-open,
+html.modal-open body {
+  overflow: hidden !important;
+}
+
