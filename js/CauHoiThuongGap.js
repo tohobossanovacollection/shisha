@@ -435,7 +435,7 @@ const faqData = [
         </ul>
         <p><strong>Địa chỉ văn phòng:</strong></p>
         <ul>
-          <li><strong>Địa chỉ:</strong> Số 12, Phố Chùa Bộc, Hà Nội, Việt Nam</li>
+          <li><strong>Địa chỉ:</strong> Số 12, Phố Chùa Bộc, Phường Kim Liên, Hà Nội, Việt Nam</li>
         </ul>
         <p><strong>Mạng xã hộ:</strong></p>
         <ul>
