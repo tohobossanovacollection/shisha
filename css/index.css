@@ -1,3 +1,17 @@
+/* Global background: soft gray for page, white for cards */
+body {
+  background-color: #f2f3f5; /* tổng nền xám dịu mắt */
+}
+
+/* Chỉ khung (cards) màu trắng, nền ngoài giữ xám */
+.seat-map, .booking-summary, .card, .content-wrapper {
+  background-color: #ffffff;
+}
+
+/* Header/Footer có thể trong suốt trên nền xám nhẹ */
+.site-header, .site-footer {
+  background-color: transparent;
+}
 /* Basic reset and typography */
 * { box-sizing: border-box; }
 html,body {

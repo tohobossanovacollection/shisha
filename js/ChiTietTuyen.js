@@ -365,7 +365,7 @@ function createBusCard(bus, routeInfo) {
             </div>
             
             <div class="bus-actions">
-                <button class="btn btn-book" onclick="openBookingDrawer('${routeInfo.route}', '${bus.name}', '${bus.departure}', '${bus.price}', '${bus.dateISO}')">
+                <button class="btn btn-book" onclick="openBookingDrawer('${routeInfo.route}', '${bus.name}', '${bus.departure}', '${bus.price}', '${bus.dateISO}', '${bus.type}')">
                     Chọn chuyến
                 </button>
             </div>
@@ -735,7 +735,7 @@ function bookTicket(route, busName, departure, price, dateISO) {
 }
 
 // Mở ngăn chọn vé (drawer) và điền thông tin chuyến được chọn
-function openBookingDrawer(route, busName, departure, price, dateISO) {
+function openBookingDrawer(route, busName, departure, price, dateISO, busType) {
     try {
         const overlay = document.getElementById('bookingOverlay');
         const drawer = document.getElementById('bookingDrawer');
@@ -818,6 +818,7 @@ function openBookingDrawer(route, busName, departure, price, dateISO) {
             bdConfirm.dataset.price = price || '';
             bdConfirm.dataset.date = dateISO || '';
             bdConfirm.dataset.remaining = remaining !== null ? String(remaining) : '0';
+            bdConfirm.dataset.type = busType || '';
         }
 
         if (overlay) overlay.classList.add('open');
@@ -842,6 +843,7 @@ function confirmBooking() {
     const departure = btn.dataset.departure || '';
     const price = btn.dataset.price || '';
     const date = btn.dataset.date || '';
+    const busType = btn.dataset.type || '';
     const remaining = parseInt(btn.dataset.remaining || '0', 10) || 0;
     const qtyInput = document.getElementById('bdQty');
     let qty = 1;
@@ -855,9 +857,20 @@ function confirmBooking() {
         return;
     }
 
-    // Chuyển sang trang đặt vé với tham số số lượng
+    // Xác định trang chuyển hướng dựa trên loại xe
+    let targetPage = 'xe32cho.html'; // mặc định
+    const typeNorm = (busType || '').toLowerCase();
+    if (typeNorm.includes('limousine')) {
+        targetPage = 'xelimousine.html';
+    } else if (typeNorm.includes('giường nằm') || typeNorm.includes('giuong nam')) {
+        targetPage = 'xegiuongnam.html';
+    } else {
+        targetPage = 'xe32cho.html';
+    }
+
+    // Chuyển sang trang xe với tham số số lượng
     const params = new URLSearchParams({ route, bus, departure, price: String(price), date, qty: String(qty) });
-    window.location.href = `DatVe.html?${params.toString()}`;
+    window.location.href = `${targetPage}?${params.toString()}`;
 }
 
 // Khởi tạo trang
