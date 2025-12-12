@@ -22,7 +22,7 @@
       title: 'Giảm giá 30% các tuyến đường miền Bắc', 
       date: '01/12/2025', 
       desc: 'Chương trình ưu đãi đặc biệt cho khách hàng đặt vé trước dịp Tết Nguyên Đán. Áp dụng từ nay đến hết tháng 12.', 
-      img: 'images/routes/namdinh.png',
+      img: 'images/news/30discount.png',
       views: 1234
     },
     { 
@@ -44,7 +44,7 @@
       title: 'Cách đặt vé xe online nhanh chóng', 
       date: '25/11/2025', 
       desc: 'Hướng dẫn chi tiết từng bước để đặt vé xe trực tuyến trên website và ứng dụng di động một cách dễ dàng.', 
-      img: 'images/routes/danang.jpg',
+      img: 'images/news/datve.png',
       views: 2156
     },
     { 
@@ -66,7 +66,7 @@
       title: 'Ưu đãi sinh viên: Giảm 20% tất cả tuyến', 
       date: '15/11/2025', 
       desc: 'Chương trình ưu đãi đặc biệt dành cho sinh viên với giá vé giảm 20% khi xuất trình thẻ sinh viên.', 
-      img: 'images/routes/dalat.jpg',
+      img: 'images/news/sinhvien.jpg',
       views: 1567
     },
     { 
@@ -77,7 +77,7 @@
       title: 'Ra mắt xe giường nằm cao cấp 5 sao', 
       date: '10/11/2025', 
       desc: 'LobiBus tự hào giới thiệu dòng xe giường nằm 5 sao với tiện nghi hiện đại, mang lại trải nghiệm tốt nhất.', 
-      img: 'images/routes/nhatrang.jpg',
+      img: 'images/bus/limousine.jpg',
       views: 987
     },
     
@@ -101,7 +101,7 @@
       title: 'Flash sale giảm 50% vé xe Sài Gòn - Đà Lạt', 
       date: '02/11/2025', 
       desc: 'Nhanh tay đặt vé trong 24h để nhận ưu đãi khủng giảm 50% cho tuyến Sài Gòn - Đà Lạt.', 
-      img: 'images/routes/dalat.jpg',
+      img: 'images/news/sale.jpg',
       views: 4532
     },
     { 
@@ -112,7 +112,7 @@
       title: 'Quy trình đổi trả vé dễ dàng', 
       date: '30/10/2025', 
       desc: 'Hướng dẫn chi tiết các bước đổi trả vé xe khách trực tuyến nhanh chóng và tiện lợi.', 
-      img: 'images/routes/hue.jpg',
+      img: 'images/news/ticket.jpg',
       views: 1876
     },
     { 
@@ -123,7 +123,7 @@
       title: 'LobiBus đạt giải thưởng dịch vụ xuất sắc', 
       date: '28/10/2025', 
       desc: 'Vinh dự nhận giải thưởng "Dịch vụ vận tải hành khách xuất sắc nhất năm 2025".', 
-      img: 'images/routes/danang.jpg',
+      img: 'images/news/buscompany.png',
       views: 756
     },
     { 
@@ -134,7 +134,7 @@
       title: 'Những món ăn đặc sản miền Tây', 
       date: '25/10/2025', 
       desc: 'Điểm qua những món ăn đặc sản không thể bỏ qua khi du lịch miền Tây Nam Bộ.', 
-      img: 'images/routes/cantho.jpg',
+      img: 'images/news/westsidefood.jpg',
       views: 2987
     },
     { 
@@ -145,7 +145,7 @@
       title: 'Tặng voucher 100k cho khách hàng mới', 
       date: '20/10/2025', 
       desc: 'Khách hàng đăng ký mới nhận ngay voucher 100.000đ cho chuyến đi đầu tiên.', 
-      img: 'images/routes/nhatrang.jpg',
+      img: 'images/news/coupon.png',
       views: 3654
     },
 
@@ -158,7 +158,7 @@
       title: 'Cách chọn ghế ngồi ưng ý', 
       date: '18/10/2025', 
       desc: 'Bí quyết chọn vị trí ghế ngồi tốt nhất trên xe khách để có chuyến đi thoải mái.', 
-      img: 'images/bus/ghe-ngoi.jpg',
+      img: 'images/news/seat.jpg',
       views: 1432
     },
     { 
@@ -169,7 +169,7 @@
       title: 'Khai trương bến xe mới tại Cần Thơ', 
       date: '15/10/2025', 
       desc: 'Chính thức đưa vào hoạt động bến xe hiện đại tại trung tâm thành phố Cần Thơ.', 
-      img: 'images/routes/cantho.jpg',
+      img: 'images/news/news.jpg',
       views: 654
     },
     { 
@@ -191,7 +191,7 @@
       title: 'Giảm 15% cho đoàn từ 10 người', 
       date: '08/10/2025', 
       desc: 'Ưu đãi đặc biệt dành cho các đoàn du lịch, công ty đặt vé từ 10 người trở lên.', 
-      img: 'images/routes/hoian.jpg',
+      img: 'images/news/coupon.png',
       views: 1123
     },
     { 
@@ -240,18 +240,20 @@
     // Render news cards
     newsGrid.innerHTML = newsToShow.map(item => `
       <div class="col-12 col-md-6" data-category="${item.category}">
-        <article class="card h-100 shadow-sm news-item">
-          <img src="${item.img}" class="card-img-top" alt="${item.badge}" style="height: 200px; object-fit: cover;">
-          <div class="card-body">
-            <span class="badge ${item.badgeClass} mb-2">${item.badge}</span>
-            <h5 class="card-title">${item.title}</h5>
-            <p class="text-muted small mb-2">
-              <i class="bi bi-calendar"></i> ${item.date}
-            </p>
-            <p class="card-text">${item.desc}</p>
-            <a href="news-detail.html?id=${item.id}" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
-          </div>
-        </article>
+        <a href="news-detail.html?id=${item.id}" class="text-decoration-none">
+          <article class="card h-100 shadow-sm news-item">
+            <img src="${item.img}" class="card-img-top" alt="${item.badge}" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <span class="badge ${item.badgeClass} mb-2">${item.badge}</span>
+              <h5 class="card-title">${item.title}</h5>
+              <p class="text-muted small mb-2">
+                <i class="bi bi-calendar"></i> ${item.date}
+              </p>
+              <p class="card-text">${item.desc}</p>
+              <span class="btn btn-outline-primary btn-sm">Xem chi tiết →</span>
+            </div>
+          </article>
+        </a>
       </div>
     `).join('');
 

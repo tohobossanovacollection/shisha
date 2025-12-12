@@ -633,9 +633,11 @@ body { background: #f7f9fb; }
 }
 
 .latest-news .news-card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px);
   border-color: #27ae60;
-  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.15) !important;
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.15) !important; */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
 }
 
 .latest-news .news-card .card-img-top {
