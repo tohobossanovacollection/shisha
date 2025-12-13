@@ -39,6 +39,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Cập nhật tổng tiền
     updateTotalPrice();
+
+    // Xử lý nút Hủy
+    document.querySelector('.btn-cancel')?.addEventListener('click', function() {
+        window.location.href = 'ChiTietTuyen.html';
+    });
+
+    // Xử lý nút Thanh toán
+    document.querySelector('.btn-pay')?.addEventListener('click', function() {
+        // Kiểm tra đã chọn đủ ghế
+        if (bookingData.selectedSeats.length !== bookingData.requiredQty) {
+            showNotificationModal(`Xin hãy chọn đủ ${bookingData.requiredQty} chỗ!`);
+            return;
+        }
+
+        // Kiểm tra thông tin khách hàng
+        const customerName = document.getElementById('customerName')?.value.trim();
+        const customerPhone = document.getElementById('customerPhone')?.value.trim();
+        const customerEmail = document.getElementById('customerEmail')?.value.trim();
+
+        if (!customerName || !customerPhone || !customerEmail) {
+            showNotificationModal('Xin hãy điền đầy đủ thông tin!');
+            return;
+        }
+
+        // Kiểm tra định dạng email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(customerEmail)) {
+            showNotificationModal('Vui lòng nhập email hợp lệ!');
+            return;
+        }
+
+        // Kiểm tra số điện thoại
+        const phoneRegex = /^[0-9]{10,11}$/;
+        if (!phoneRegex.test(customerPhone)) {
+            showNotificationModal('Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)!');
+            return;
+        }
+
+        showThankYouModal();
+    });
 });
 
 function initializeSeats() {
@@ -218,4 +258,96 @@ function continueBooking() {
     
     // Chuyển sang trang đặt vé/thanh toán
     window.location.href = `DatVe.html?${params.toString()}`;
+}
+
+// Hiển thị modal thông báo
+function showNotificationModal(message) {
+    // Tạo overlay
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+    // Tạo modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: white;
+        padding: 2.5rem 3rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+    `;
+
+    modal.innerHTML = `
+        <div style="font-size: 2.5rem; color: #e74c3c; margin-bottom: 1rem;">⚠</div>
+        <p style="color: #333; font-size: 1.1rem; margin: 0;">${message}</p>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // Đóng modal khi click vào overlay
+    overlay.addEventListener('click', function() {
+        document.body.removeChild(overlay);
+    });
+
+    // Tự động đóng sau 3 giây
+    setTimeout(() => {
+        if (document.body.contains(overlay)) {
+            document.body.removeChild(overlay);
+        }
+    }, 3000);
+}
+
+// Hiển thị modal cảm ơn
+function showThankYouModal() {
+    // Tạo overlay
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    `;
+
+    // Tạo modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: white;
+        padding: 3rem 4rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.3s ease;
+    `;
+
+    modal.innerHTML = `
+        <div style="font-size: 3rem; color: #27ae60; margin-bottom: 1rem;">✓</div>
+        <h2 style="font-size: 1.5rem; color: #1a1a1a; margin-bottom: 0.5rem;">Cảm ơn quý khách!</h2>
+        <p style="color: #666; font-size: 1rem;">Chúc quý khách có chuyến đi vừa ý</p>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // Chuyển về trang index sau 2 giây
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 2000);
 }
